@@ -1,0 +1,11 @@
+<CaptionToolBar>
+	<Group>
+		<Options>
+			<Tool name="Overview" state="active"/>
+			<Tool name="Displays"/>
+			<Tool name="Storage"/>
+			<Tool name="Support"/>
+			<Tool name="Service"/>
+		</Options>
+	</Group>
+</CaptionToolBar>
