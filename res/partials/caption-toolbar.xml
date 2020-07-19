@@ -2,10 +2,8 @@
 	<Group>
 		<Options>
 			<Tool name="Overview" state="active"/>
-			<Tool name="Displays"/>
-			<Tool name="Storage"/>
-			<Tool name="Support"/>
-			<Tool name="Service"/>
+			<Tool name="Source Code"/>
+			<Tool name="Issues"/>
 		</Options>
 	</Group>
 </CaptionToolBar>
