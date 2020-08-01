@@ -1,6 +1,6 @@
 <MenuBar>
-	<Menu name="System">
-		<Menu name="About System" hotkey="meta+a"/>
+	<Menu name="About">
+		<Menu name="About About" shell="win -a"/>
 		<Menu type="divider"/>
 		<Menu name="Preferences" hotkey="shift+,"/>
 		<Menu type="divider"/>
@@ -9,20 +9,20 @@
 			<Menu name="Close"/>
 		</Menu>
 		<Menu type="divider"/>
-		<Menu name="Hide System"/>
+		<Menu name="Hide About"/>
 		<Menu name="Hide Others"/>
 		<Menu name="Show All" disabled="1"/>
 		<Menu type="divider"/>
-		<Menu name="Quit System" shell="win -c"/>
+		<Menu name="Quit About" shell="win -c"/>
 	</Menu>
 	<Menu name="View">
 		<Menu name="Basic" click="view-basic" check-group="view-option" is-checked="1"/>
 		<Menu name="Scientific" click="view-scientific" check-group="view-option"/>
 	</Menu>
 	<Menu name="Help">
-		<Menu name="Send System Feedback"/>
+		<Menu name="Send About Feedback"/>
 		<Menu type="divider"/>
-		<Menu name="System Help"/>
+		<Menu name="About Help"/>
 		<Menu type="divider"/>
 		<Menu name="License"/>
 	</Menu>

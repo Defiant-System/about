@@ -2,8 +2,8 @@
 	<Group>
 		<Options>
 			<Tool name="Overview" state="active"/>
-			<Tool name="Issues"/>
 			<Tool name="License"/>
+			<Tool name="Issues"/>
 			<Tool name="Source Code"/>
 		</Options>
 	</Group>
