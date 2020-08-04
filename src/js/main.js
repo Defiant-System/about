@@ -29,8 +29,11 @@ const about = {
 				node = event.node.selectSingleNode(".//meta[@name='author']");
 				Self.els.author.html(node.getAttribute("value"));
 
-				// Self.els.size.html();
-				// Self.els.modified.html();
+				let size = event.node.xml.replace(/ {4}/g, "").length;
+				Self.els.size.html(defiant.formatBytes(size, 1));
+
+				let date = new Date(event.node.getAttribute("mDate"));
+				Self.els.modified.html(date.toISOString().slice(0, 10));
 				
 				node = event.node.selectSingleNode(".//meta[@name='license']");
 				Self.els.license.html(node.getAttribute("value"));
