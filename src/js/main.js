@@ -32,7 +32,7 @@ const about = {
 				let size = event.node.xml.replace(/ {4}/g, "").length;
 				Self.els.size.html(defiant.formatBytes(size, 1));
 
-				let date = new Date(event.node.getAttribute("mDate"));
+				let date = new Date(+event.node.getAttribute("mDate"));
 				Self.els.modified.html(date.toISOString().slice(0, 10));
 				
 				node = event.node.selectSingleNode(".//meta[@name='license']");
