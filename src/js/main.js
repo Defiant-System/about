@@ -14,28 +14,30 @@ const about = {
 	},
 	dispatch(event) {
 		let Self = about,
+			xApp,
 			node;
 		
 		//console.log(event);
 		switch (event.type) {
-			case "show-about":
-				node = event.node.selectSingleNode(".//meta[@name='id']");
+			case "window.open":
+				xApp = window.bluePrint.selectSingleNode(`sys://Application[.//meta/@name="id" and .//meta/@value="${event.app}"]`);
+				node = xApp.selectSingleNode(".//meta[@name='id']");
 				Self.els.icon.css({ "background-image": `url(ant/icons/app-icon-${node.getAttribute("value")}.png)` });
 
-				node = event.node.selectSingleNode(".//meta[@name='title']");
+				node = xApp.selectSingleNode(".//meta[@name='title']");
 				Self.els.name.html(node.getAttribute("value"));
 				Self.els.version.html(node.getAttribute("version"));
 
-				node = event.node.selectSingleNode(".//meta[@name='author']");
+				node = xApp.selectSingleNode(".//meta[@name='author']");
 				Self.els.author.html(node.getAttribute("value"));
 
-				let size = event.node.xml.replace(/ {4}/g, "").length;
+				let size = xApp.xml.replace(/ {4}/g, "").length;
 				Self.els.size.html(defiant.formatBytes(size, 1));
 
-				let date = new Date(+event.node.getAttribute("mDate"));
+				let date = new Date(+xApp.getAttribute("mDate"));
 				Self.els.modified.html(date.toISOString().slice(0, 10));
 				
-				node = event.node.selectSingleNode(".//meta[@name='license']");
+				node = xApp.selectSingleNode(".//meta[@name='license']");
 				Self.els.license.html(node.getAttribute("value"));
 				break;
 		}

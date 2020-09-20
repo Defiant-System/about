@@ -2,17 +2,6 @@
 	<Menu name="About">
 		<Menu name="About About" shell="win -a"/>
 		<Menu type="divider"/>
-		<Menu name="Preferences" hotkey="shift+,"/>
-		<Menu type="divider"/>
-		<Menu name="Services">
-			<Menu name="Open"/>
-			<Menu name="Close"/>
-		</Menu>
-		<Menu type="divider"/>
-		<Menu name="Hide About"/>
-		<Menu name="Hide Others"/>
-		<Menu name="Show All" disabled="1"/>
-		<Menu type="divider"/>
 		<Menu name="Quit About" shell="win -c"/>
 	</Menu>
 	<Menu name="View">
