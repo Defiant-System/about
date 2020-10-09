@@ -11,6 +11,9 @@ const about = {
 			modified: window.find(".details .modified"),
 			license:  window.find(".details .license"),
 		};
+
+		let now = new Date();
+		window.find(".year").html(now.getFullYear());
 	},
 	dispatch(event) {
 		let Self = about,
@@ -19,7 +22,7 @@ const about = {
 		
 		//console.log(event);
 		switch (event.type) {
-			case "window.open":
+			case "about-app":
 				xApp = window.bluePrint.selectSingleNode(`sys://Application[.//meta/@name="id" and .//meta/@value="${event.app}"]`);
 				node = xApp.selectSingleNode(".//meta[@name='id']");
 				Self.els.icon.css({ "background-image": `url(ant/icons/app-icon-${node.getAttribute("value")}.png)` });
