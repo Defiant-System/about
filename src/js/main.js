@@ -18,14 +18,17 @@ const about = {
 	dispatch(event) {
 		let Self = about,
 			xApp,
+			namespace,
+			name,
 			node;
 		
 		//console.log(event);
 		switch (event.type) {
 			case "about-app":
 				xApp = window.bluePrint.selectSingleNode(`sys://Application[.//meta/@name="id" and .//meta/@value="${event.app}"]`);
-				node = xApp.selectSingleNode(".//meta[@name='id']");
-				Self.els.icon.css({ "background-image": `url(ant/icons/app-icon-${node.getAttribute("value")}.png)` });
+				name = xApp.selectSingleNode(".//meta[@name='id']").getAttribute("value");
+				namespace = xApp.selectSingleNode(".//meta[@name='author']").getAttribute("namespace");
+				Self.els.icon.css({"background-image": `url(/app/${namespace}/icons/app-icon-${name}.png)`});
 
 				node = xApp.selectSingleNode(".//meta[@name='title']");
 				Self.els.name.html(node.getAttribute("value"));
