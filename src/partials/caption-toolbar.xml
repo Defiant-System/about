@@ -1,6 +1,11 @@
 <CaptionToolBar>
 	<Group>
-		<Options>
+		<Options class="defiant">
+			<Tool name="Overview" state="active"/>
+			<Tool name="Storage"/>
+			<Tool name="Support"/>
+		</Options>
+		<Options class="app">
 			<Tool name="Overview" state="active"/>
 			<Tool name="License"/>
 			<Tool name="Issues"/>

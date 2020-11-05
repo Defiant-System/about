@@ -24,12 +24,16 @@ const about = {
 		
 		//console.log(event);
 		switch (event.type) {
+			case "about-defiant":
+				// alter toolbar
+				window.find(".toolbar-group_").addClass("about-defiant");
+				break;
 			case "about-app":
 				xApp = window.bluePrint.selectSingleNode(`sys://Application[.//meta/@name="id" and .//meta/@value="${event.app}"]`);
 				name = xApp.selectSingleNode(".//meta[@name='id']").getAttribute("value");
 				namespace = xApp.selectSingleNode(".//meta[@name='author']").getAttribute("namespace");
 				Self.els.icon.css({"background-image": `url(/app/${namespace}/icons/app-icon-${name}.png)`});
-
+				/*
 				node = xApp.selectSingleNode(".//meta[@name='title']");
 				Self.els.name.html(node.getAttribute("value"));
 				Self.els.version.html(node.getAttribute("version"));
@@ -45,6 +49,7 @@ const about = {
 				
 				node = xApp.selectSingleNode(".//meta[@name='license']");
 				Self.els.license.html(node.getAttribute("value"));
+				*/
 				break;
 		}
 	}
