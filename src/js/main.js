@@ -3,17 +3,11 @@ const about = {
 	init() {
 		// fast references
 		this.els = {
-			icon:     window.find(".panel-left .icon"),
-			name:     window.find(".panel-right h1"),
-			version:  window.find(".panel-right h5 span"),
-			author:   window.find(".details .author"),
-			size:     window.find(".details .size"),
-			modified: window.find(".details .modified"),
-			license:  window.find(".details .license"),
+			content:  window.find("content"),
 		};
 
-		let now = new Date();
-		window.find(".year").html(now.getFullYear());
+		// let now = new Date();
+		// window.find(".year").html(now.getFullYear());
 	},
 	dispatch(event) {
 		let Self = about,
@@ -27,13 +21,25 @@ const about = {
 			case "about-defiant":
 				// alter toolbar
 				window.find(".toolbar-group_").addClass("about-defiant");
+
+				window.render({
+					template: "about-defiant",
+					match: `//*`,
+					target: Self.els.content,
+				});
 				break;
 			case "about-app":
+				window.render({
+					template: "about-app",
+					match: `//*`,
+					target: Self.els.content,
+				});
+				/*
 				xApp = window.bluePrint.selectSingleNode(`sys://Application[.//meta/@name="id" and .//meta/@value="${event.app}"]`);
 				name = xApp.selectSingleNode(".//meta[@name='id']").getAttribute("value");
 				namespace = xApp.selectSingleNode(".//meta[@name='author']").getAttribute("namespace");
 				Self.els.icon.css({"background-image": `url(/app/${namespace}/icons/app-icon-${name}.png)`});
-				/*
+
 				node = xApp.selectSingleNode(".//meta[@name='title']");
 				Self.els.name.html(node.getAttribute("value"));
 				Self.els.version.html(node.getAttribute("version"));

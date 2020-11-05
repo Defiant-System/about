@@ -16,6 +16,7 @@
 		<meta name="toolbar-style" value="src/css/toolbar.less"/>
 		<meta name="icons" value="src/svg/icons.svg"/>
 		<meta name="content" value="src/partials/content.htm"/>
+		<meta name="xsl" value="src/partials/templates.xsl"/>
 		
 		@import "src/partials/caption-toolbar.xml"
 		@import "src/partials/menubar.xml"
