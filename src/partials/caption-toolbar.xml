@@ -1,15 +1,15 @@
 <CaptionToolBar>
 	<Group>
 		<Options class="defiant">
-			<Tool name="Overview" state="active"/>
-			<Tool name="Storage"/>
-			<Tool name="Support"/>
+			<Tool name="Overview" click="about-defiant" state="active"/>
+			<Tool name="Storage" click="defiant-storage"/>
+			<Tool name="Support" click="defiant-support"/>
 		</Options>
 		<Options class="app">
-			<Tool name="Overview" state="active"/>
-			<Tool name="License"/>
-			<Tool name="Issues"/>
-			<Tool name="Source Code"/>
+			<Tool name="Overview" click="about-app" state="active"/>
+			<Tool name="License" click="app-license"/>
+			<Tool name="Issues" click="app-issues"/>
+			<Tool name="Source Code" click="app-source-code"/>
 		</Options>
 	</Group>
 </CaptionToolBar>

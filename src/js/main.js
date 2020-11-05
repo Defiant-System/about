@@ -27,7 +27,15 @@ const about = {
 					match: `//*`,
 					target: Self.els.content,
 				});
-				break;
+				return true;
+			case "defiant-storage":
+			case "defiant-support":
+				window.render({
+					template: event.type,
+					match: `//*`,
+					target: Self.els.content,
+				});
+				return true;
 			case "about-app":
 				window.render({
 					template: "about-app",
@@ -56,7 +64,16 @@ const about = {
 				node = xApp.selectSingleNode(".//meta[@name='license']");
 				Self.els.license.html(node.getAttribute("value"));
 				*/
-				break;
+				return true;
+			case "app-license":
+			case "app-issues":
+			case "app-source-code":
+				window.render({
+					template: event.type,
+					match: `//*`,
+					target: Self.els.content,
+				});
+				return true;
 		}
 	}
 };

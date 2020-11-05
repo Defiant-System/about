@@ -1,5 +1,11 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<xsl:template name="footer-row">
+	<div class="row-foot">
+		2019-<xsl:value-of select="substring( //details/meta[@name='system']/@buildDate, 1, 4 )" /> © <xsl:value-of select="//details/meta[@name='company']/@value" /> - All Rights Reserverd
+	</div>
+</xsl:template>
+
 <xsl:template name="about-defiant">
 	<div class="row-body">
 		<div class="panel-left">
@@ -16,13 +22,23 @@
 				</div>
 				<div class="field-row">
 					<div>Last updated</div>
-					<div class="modified"></div>
+					<div class="modified"><xsl:value-of select="//details/meta[@name='system']/@buildDate" /></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row-foot">
-		2019-<span class="year">2021</span> © <xsl:value-of select="//details/meta[@name='company']/@value" /> - All Rights Reserverd
+	<xsl:call-template name="footer-row"/>
+</xsl:template>
+
+<xsl:template name="defiant-storage">
+	<div class="row-body">
+		defiant-storage
+	</div>
+</xsl:template>
+
+<xsl:template name="defiant-support">
+	<div class="row-body">
+		defiant-support
 	</div>
 </xsl:template>
 
@@ -55,8 +71,24 @@
 			</div>
 		</div>
 	</div>
-	<div class="row-foot">
-		2019-<span class="year">2021</span> © Defiant System AB - All Rights Reserverd
+	<xsl:call-template name="footer-row"/>
+</xsl:template>
+
+<xsl:template name="app-license">
+	<div class="row-body">
+		app-license
+	</div>
+</xsl:template>
+
+<xsl:template name="app-issues">
+	<div class="row-body">
+		app-issues
+	</div>
+</xsl:template>
+
+<xsl:template name="app-source-code">
+	<div class="row-body">
+		app-source-code
 	</div>
 </xsl:template>
 
