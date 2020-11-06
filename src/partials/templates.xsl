@@ -50,10 +50,10 @@
 				<h4>Defiant Cloud Storage</h4>
 				<h5>948 MB available of 1 GB</h5>
 				<div class="disc-chart">
-					<div class="video"></div>
-					<div class="audio"></div>
-					<div class="documents"></div>
-					<div class="other"></div>
+					<div style="width: 53px;"></div>
+					<div style="width: 23px;"></div>
+					<div style="width: 31px;"></div>
+					<div style="width: 43px;"></div>
 				</div>
 			</div>
 		</div>
