@@ -6,36 +6,35 @@ const about = {
 			content:  window.find("content"),
 		};
 
-		// let now = new Date();
-		// window.find(".year").html(now.getFullYear());
+		// temp
+		setTimeout(() => {
+			window.find(".toolbar-tool_[data-click='defiant-storage']").trigger("click");
+		}, 500);
 	},
 	dispatch(event) {
 		let Self = about,
-			xApp,
-			namespace,
-			name,
-			node;
+			height,
+			el;
 		
 		//console.log(event);
 		switch (event.type) {
+			// About Defiant
 			case "about-defiant":
 				// alter toolbar
 				window.find(".toolbar-group_").addClass("about-defiant");
-
-				window.render({
-					template: "about-defiant",
-					match: `//*`,
-					target: Self.els.content,
-				});
-				return true;
+				/* falls through */
 			case "defiant-storage":
 			case "defiant-support":
-				window.render({
+				el = window.render({
 					template: event.type,
 					match: `//*`,
 					target: Self.els.content,
 				});
+
+				height = el.height() +"px";
+				window.body.css({ height });
 				return true;
+			// About app
 			case "about-app":
 				window.render({
 					template: "about-app",
