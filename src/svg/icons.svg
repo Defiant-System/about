@@ -34,11 +34,27 @@
 			.st7{fill:url(#SVGID_8_);}
 			.st8{fill:url(#SVGID_9_);}
 			.st9{fill:url(#SVGID_10_);}
+			.st10{fill:url(#SVGID_11_);}
+			.st11{fill:url(#SVGID_12_);}
 		</style>
+		<filter id="inset-shadow">
+			<feComponentTransfer in="SourceAlpha">
+				<feFuncA type="table" tableValues="1 0"/>
+			</feComponentTransfer>
+			<feGaussianBlur stdDeviation="5"/>
+			<feOffset dx="0" dy="2" result="offsetblur"/>
+			<feFlood flood-color="#c70" result="color"/>
+			<feComposite in2="offsetblur" operator="in"/>
+			<feComposite in2="SourceAlpha" operator="in"/>
+			<feMerge>
+				<feMergeNode in="SourceGraphic"/>
+				<feMergeNode />
+			</feMerge>
+		</filter>
 		<filter x="-5.4%" y="-3.1%" width="110.8%" height="112.5%" filterUnits="objectBoundingBox" id="appstore-filter-5">
 		    <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-		    <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-		    <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.203945879 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+		    <feGaussianBlur stdDeviation="7" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+		    <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
 		    <feMerge>
 		        <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
 		        <feMergeNode in="SourceGraphic"></feMergeNode>
@@ -89,7 +105,7 @@
 			c7.9,0,15.3-8.2,15.7-16c0-0.5,0-1-0.1-1.5L425.3,35.2C424.6,26.3,417.7,20.4,409.5,20.4z"/>
 		<linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="250.0054" y1="29.2212" x2="250.0054" y2="325.7788">
 			<stop  offset="0" style="stop-color:#FFC320"/>
-			<stop  offset="1" style="stop-color:#EC9B00"/>
+			<stop  offset="1" style="stop-color:#ff9900"/>
 		</linearGradient>
 		<path class="st6" d="M403.4,29.2H95.6c-7.9,0-12.1,4.3-13.2,13.2L58.1,301c0,0.5-0.9,9.8-0.9,10.3c-0.6,9,7.5,14.5,15.2,14.5h355.3
 			c9.1,0,15.8-7,15.2-14.5c0-0.5-0.2-2.9-0.2-3.4l-26-265.5C415.9,33.9,411.3,29.2,403.4,29.2z"/>
@@ -112,6 +128,26 @@
 			<stop  offset="1" style="stop-color:#248920"/>
 		</radialGradient>
 		<path class="st9" d="M385.1,437.1c0,3.7-3,6.8-6.8,6.8s-6.8-3-6.8-6.8s3-6.1,6.8-6.1S385.1,433.3,385.1,437.1z"/>
+		<g filter="url(#inset-shadow)">
+			<linearGradient id="SVGID_11_" gradientUnits="userSpaceOnUse" x1="250.4603" y1="79.248" x2="250.4603" y2="275.752">
+				<stop  offset="0" style="stop-color:#DEA410"/>
+				<stop  offset="1" style="stop-color:#D78700"/>
+			</linearGradient>
+			<path class="st10" d="M350.1,101.5c-4.5-7.8-16.8-13.5-37.6-17.4c-16.8-3.1-38.6-4.9-61.4-4.9c-22.9,0-45,1.7-62.2,4.9
+				c-9.4,1.7-17.2,3.9-23.3,6.3c-7.4,3.1-12.3,6.6-14.8,11c-2.5,4.4-3.2,10.5-2.1,18.7c0.9,6.6,3,14.6,6.3,23.8
+				c6,16.8,15.7,37.2,27.4,57.5c11.3,19.6,23.7,37.6,34.7,50.5c6.1,7.1,11.7,12.7,16.8,16.6c6.2,4.8,11.7,7.2,16.6,7.2
+				c9,0,19.9-7.7,33.5-23.5c10.9-12.8,23.2-30.5,34.4-50.1c11.7-20.3,21.5-40.9,27.6-57.9c3.3-9.3,5.4-17.4,6.3-24
+				C353.3,112,352.6,105.9,350.1,101.5z M343.2,132.4c-4.2-2.4-10.2-1.4-12.6,2.8l0,0c-7.8,31.5-39.7,86.9-63.1,109.3l0,0
+				c-2.4,4.2-0.3,9.9,3.8,12.3c-8,8-15.3,12.8-20.9,12.8c-5.5,0-12.8-4.9-21-13.2l0,0c4.2-2.4,6.3-8.2,3.9-12.4l0,0
+				c-23.3-22.5-55.5-77.9-63.1-109.2l0,0c-2.4-4.2-8.5-5.2-12.6-2.8l-0.1,0c-3.5-12.4-4.4-22.2-1.4-27.4c2.8-4.9,11-8.8,22.5-11.8
+				l0,0.2c0,4.8,3.9,9.6,8.8,9.6c31.2-9,95.1-9.1,126.1,0l0,0c4.8,0,8.8-4.7,8.8-9.5l0.1-0.2c11.3,3,19.3,7,22.2,11.9
+				C347.7,109.8,346.8,119.8,343.2,132.4z"/>
+			<linearGradient id="SVGID_12_" gradientUnits="userSpaceOnUse" x1="250.4623" y1="122.8687" x2="250.4623" y2="214.0178">
+				<stop  offset="0" style="stop-color:#DEA410"/>
+				<stop  offset="1" style="stop-color:#D78700"/>
+			</linearGradient>
+			<path class="st11" d="M203.8,132.3C196.5,145,236,214,250.5,214c14.9,0,54-69.1,46.7-81.7C289.8,119.6,211,119.8,203.8,132.3z"/>
+		</g>
 	</svg>
 
 </svg>
