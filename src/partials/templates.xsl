@@ -51,66 +51,11 @@
 			<div class="panel-right">
 				<h4>Defiant Cloud Storage</h4>
 				<h5>948 MB available of 1 GB</h5>
-				<xsl:call-template name="disc-bar"/>
-				<!-- <br/>
-				<xsl:call-template name="facets"/> -->
+				<xsl:call-template name="sys:disc-bar"/>
 			</div>
 		</div>
 	</div>
 </xsl:template>
-
-
-<xsl:template name="disc-bar">
-	<xsl:variable name="quota" select="//FileSystem/@quota"/>
-
-	<div class="disc-bar">
-		<xsl:for-each select="//MimeGroups/i">
-			<xsl:variable name="final">
-				<xsl:call-template name="summerize-mime-groups">
-					<xsl:with-param name="node" select="./*"/>
-				</xsl:call-template>
-			</xsl:variable>
-
-			<div>
-				<xsl:attribute name="style">
-					background: <xsl:value-of select="@color"/>;
-					width: <xsl:value-of select="format-number($final div $quota, '##0.0%')"/>;
-				</xsl:attribute>
-				<span><xsl:value-of select="@name"/></span>
-			</div>
-		</xsl:for-each>
-	</div>
-</xsl:template>
-
-<!-- temporary template -->
-<xsl:template name="summerize-mime-groups">
-	<xsl:param name="node"/>
-	<xsl:param name="accum" select="0"/>
-
-	<xsl:choose>
-		<xsl:when test="$node">
-			<xsl:call-template name="summerize-mime-groups">
-				<xsl:with-param name="node" select="$node[position() > 1 and not(last())]"/>
-				<xsl:with-param name="accum" select="$accum + sum(//FileSystem//i[@kind = $node/@id]/@size)"/>
-			</xsl:call-template>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:value-of select="$accum"/>
-		</xsl:otherwise>
-	</xsl:choose>
-</xsl:template>
-
-
-
-
-<xsl:template name="facets">
-	<xsl:for-each select="//Mime/i">
-		<xsl:value-of select="@name" /> - 
-		<xsl:value-of select="count(//FileSystem//i[@kind = current()/@id])" />
-		<br/>
-	</xsl:for-each>
-</xsl:template>
-
 
 
 <xsl:template name="defiant-support">
