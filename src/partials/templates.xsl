@@ -6,6 +6,7 @@
 	</div>
 </xsl:template>
 
+
 <xsl:template name="about-defiant">
 	<div class="about-defiant">
 		<div class="row-body">
@@ -40,6 +41,7 @@
 	</div>
 </xsl:template>
 
+
 <xsl:template name="defiant-storage">
 	<div class="defiant-storage">
 		<div class="row-body">
@@ -55,10 +57,64 @@
 					<div style="width: 31px;"></div>
 					<div style="width: 43px;"></div>
 				</div>
+
+				<br/>
+				<xsl:call-template name="mime-groups"/>
+				<br/>
+				<xsl:call-template name="facets"/>
+
 			</div>
 		</div>
 	</div>
 </xsl:template>
+
+
+<xsl:template name="mime-groups">
+	<xsl:for-each select="//MimeGroups/i">
+		<xsl:variable name="size" select="0" />
+
+		<xsl:variable name="final">
+		<xsl:call-template name="summerize-mime-groups">
+            <xsl:with-param name="node" select="./*"/>
+          </xsl:call-template>
+      </xsl:variable>
+
+		<xsl:value-of select="@name" /> - 
+		<xsl:value-of select="$final" />
+		<br/>
+	</xsl:for-each>
+</xsl:template>
+
+
+<xsl:template name="summerize-mime-groups">
+	<xsl:param name="node"/>
+	<xsl:param name="accum" select="0"/>
+
+	<xsl:choose>
+		<xsl:when test="$node">
+			<xsl:call-template name="summerize-mime-groups">
+				<xsl:with-param name="node" select="$node[position() > 1 and not(last())]"/>
+				<xsl:with-param name="accum" select="$accum + sum(//FileSystem//i[@kind = $node/@id]/@size)"/>
+			</xsl:call-template>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="$accum"/>
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:template>
+
+
+
+
+<xsl:template name="facets">
+	<xsl:for-each select="//Mime/i">
+		<xsl:value-of select="@name" /> - 
+		<xsl:value-of select="count(//FileSystem//i[@kind = current()/@id])" />
+		<br/>
+	</xsl:for-each>
+</xsl:template>
+
+
 
 <xsl:template name="defiant-support">
 	<div class="defiant-support">
@@ -67,6 +123,7 @@
 		</div>
 	</div>
 </xsl:template>
+
 
 <xsl:template name="about-app">
 	<div class="about-app">
@@ -102,6 +159,7 @@
 	</div>
 </xsl:template>
 
+
 <xsl:template name="app-license">
 	<div class="app-license">
 		<div class="row-body">
@@ -109,6 +167,7 @@
 		</div>
 	</div>
 </xsl:template>
+
 
 <xsl:template name="app-issues">
 	<div class="app-issues">
@@ -118,6 +177,7 @@
 	</div>
 </xsl:template>
 
+
 <xsl:template name="app-source-code">
 	<div class="app-source-code">
 		<div class="row-body">
@@ -125,5 +185,6 @@
 		</div>
 	</div>
 </xsl:template>
+
 
 </xsl:stylesheet>
