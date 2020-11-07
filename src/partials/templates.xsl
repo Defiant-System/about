@@ -43,6 +43,18 @@
 
 
 <xsl:template name="defiant-storage">
+	<xsl:variable name="used" select="sum(//FileSystem//i/@size)"></xsl:variable>
+	<xsl:variable name="quota">
+		<xsl:call-template name="sys:file-size">
+			<xsl:with-param name="bytes" select="//FileSystem/@quota" />
+		</xsl:call-template>
+	</xsl:variable>
+	<xsl:variable name="available">
+		<xsl:call-template name="sys:file-size">
+			<xsl:with-param name="bytes" select="//FileSystem/@quota - $used" />
+		</xsl:call-template>
+	</xsl:variable>
+
 	<div class="defiant-storage">
 		<div class="row-body">
 			<div class="panel-left">
@@ -50,7 +62,11 @@
 			</div>
 			<div class="panel-right">
 				<h4>Defiant Cloud Storage</h4>
-				<h5>948 MB available of 1 GB</h5>
+				<h5>
+					<xsl:value-of select="$available" />
+					<xsl:text> available of </xsl:text>
+					<xsl:value-of select="$quota" />
+				</h5>
 				<xsl:call-template name="sys:disc-bar"/>
 			</div>
 		</div>
