@@ -51,41 +51,38 @@
 			<div class="panel-right">
 				<h4>Defiant Cloud Storage</h4>
 				<h5>948 MB available of 1 GB</h5>
-				<div class="disc-chart">
-					<div style="width: 53px;"></div>
-					<div style="width: 23px;"></div>
-					<div style="width: 31px;"></div>
-					<div style="width: 43px;"></div>
-				</div>
-
-				<br/>
-				<xsl:call-template name="mime-groups"/>
-				<br/>
-				<xsl:call-template name="facets"/>
-
+				<xsl:call-template name="disc-bar"/>
+				<!-- <br/>
+				<xsl:call-template name="facets"/> -->
 			</div>
 		</div>
 	</div>
 </xsl:template>
 
 
-<xsl:template name="mime-groups">
-	<xsl:for-each select="//MimeGroups/i">
-		<xsl:variable name="size" select="0" />
+<xsl:template name="disc-bar">
+	<xsl:variable name="quota" select="//FileSystem/@quota"/>
 
-		<xsl:variable name="final">
-		<xsl:call-template name="summerize-mime-groups">
-            <xsl:with-param name="node" select="./*"/>
-          </xsl:call-template>
-      </xsl:variable>
+	<div class="disc-bar">
+		<xsl:for-each select="//MimeGroups/i">
+			<xsl:variable name="final">
+				<xsl:call-template name="summerize-mime-groups">
+					<xsl:with-param name="node" select="./*"/>
+				</xsl:call-template>
+			</xsl:variable>
 
-		<xsl:value-of select="@name" /> - 
-		<xsl:value-of select="$final" />
-		<br/>
-	</xsl:for-each>
+			<div>
+				<xsl:attribute name="style">
+					background: <xsl:value-of select="@color"/>;
+					width: <xsl:value-of select="format-number($final div $quota, '##0.0%')"/>;
+				</xsl:attribute>
+				<span><xsl:value-of select="@name"/></span>
+			</div>
+		</xsl:for-each>
+	</div>
 </xsl:template>
 
-
+<!-- temporary template -->
 <xsl:template name="summerize-mime-groups">
 	<xsl:param name="node"/>
 	<xsl:param name="accum" select="0"/>
