@@ -77,7 +77,12 @@
 <xsl:template name="defiant-support">
 	<div class="defiant-support">
 		<div class="row-body">
-			defiant-support
+			<div class="panel-left">
+				
+			</div>
+			<div class="panel-right">
+				Defiant Resources
+			</div>
 		</div>
 	</div>
 </xsl:template>
@@ -87,16 +92,20 @@
 	<div class="about-app">
 		<div class="row-body">
 			<div class="panel-left">
-				<i class="icon" style="background-image: url(/app/ant/icons/app-icon-finder.png);"></i>
+				<i class="icon">
+					<xsl:attribute name="style">
+						background-image: url(/app/<xsl:value-of select=".//meta[@name='author']/@namespace" />/icons/app-icon-<xsl:value-of select=".//meta[@name='id']/@value" />.png);
+					</xsl:attribute>
+				</i>
 			</div>
 			<div class="panel-right">
-				<h1>Finder</h1>
-				<h5>Version <span>1.0</span></h5>
+				<h1><xsl:value-of select=".//meta[@name='title']/@value" /></h1>
+				<h5>Version <span><xsl:value-of select=".//meta[@name='title']/@version" /></span></h5>
 
 				<div class="details">
 					<div class="field-row">
 						<div>Author</div>
-						<div class="author">Hakan Bilgin</div>
+						<div class="author"><xsl:value-of select=".//meta[@name='author']/@value" /></div>
 					</div>
 					<div class="field-row">
 						<div>Size</div>
@@ -108,7 +117,9 @@
 					</div>
 					<div class="field-row">
 						<div>License</div>
-						<div class="license" data-click="show-license">MIT</div>
+						<div class="license" data-click="show-license">
+							<xsl:value-of select=".//meta[@name='license']/@value" />
+						</div>
 					</div>
 				</div>
 			</div>
@@ -121,7 +132,12 @@
 <xsl:template name="app-license">
 	<div class="app-license">
 		<div class="row-body">
-			app-license
+			<div class="panel-left">
+				
+			</div>
+			<div class="panel-right">
+				Application License
+			</div>
 		</div>
 	</div>
 </xsl:template>
@@ -130,7 +146,12 @@
 <xsl:template name="app-issues">
 	<div class="app-issues">
 		<div class="row-body">
-			app-issues
+			<div class="panel-left">
+				
+			</div>
+			<div class="panel-right">
+				Application Issues
+			</div>
 		</div>
 	</div>
 </xsl:template>
@@ -139,7 +160,12 @@
 <xsl:template name="app-source-code">
 	<div class="app-source-code">
 		<div class="row-body">
-			app-source-code
+			<div class="panel-left">
+				
+			</div>
+			<div class="panel-right">
+				Application Source Code
+			</div>
 		</div>
 	</div>
 </xsl:template>

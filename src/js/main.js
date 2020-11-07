@@ -7,12 +7,13 @@ const about = {
 		};
 
 		// temp
-		setTimeout(() => {
-			window.find(".toolbar-tool_[data-click='defiant-storage']").trigger("click");
-		}, 500);
+		// setTimeout(() => {
+		// 	window.find(".toolbar-tool_[data-click='defiant-storage']").trigger("click");
+		// }, 500);
 	},
 	dispatch(event) {
 		let Self = about,
+			app,
 			height,
 			el;
 		
@@ -36,11 +37,16 @@ const about = {
 				return true;
 			// About app
 			case "about-app":
-				window.render({
+				Self.app = Self.app || event.app;
+				
+				el = window.render({
 					template: "about-app",
-					match: `//*`,
+					match: `sys://Application[.//meta/@name="id"][.//meta/@value="${Self.app}"]`,
 					target: Self.els.content,
 				});
+
+				height = el.height() +"px";
+				window.body.css({ height });
 				/*
 				xApp = window.bluePrint.selectSingleNode(`sys://Application[.//meta/@name="id" and .//meta/@value="${event.app}"]`);
 				name = xApp.selectSingleNode(".//meta[@name='id']").getAttribute("value");
@@ -67,11 +73,14 @@ const about = {
 			case "app-license":
 			case "app-issues":
 			case "app-source-code":
-				window.render({
+				el = window.render({
 					template: event.type,
 					match: `//*`,
 					target: Self.els.content,
 				});
+
+				height = el.height() +"px";
+				window.body.css({ height });
 				return true;
 		}
 	}
