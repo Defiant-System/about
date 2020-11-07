@@ -1,18 +1,5 @@
 <MenuBar>
 	<Menu name="About">
-		<Menu name="About About" shell="win -a"/>
-		<Menu type="divider"/>
 		<Menu name="Quit About" shell="win -c"/>
-	</Menu>
-	<Menu name="View">
-		<Menu name="Basic" click="view-basic" check-group="view-option" is-checked="1"/>
-		<Menu name="Scientific" click="view-scientific" check-group="view-option"/>
-	</Menu>
-	<Menu name="Help">
-		<Menu name="Send About Feedback"/>
-		<Menu type="divider"/>
-		<Menu name="About Help"/>
-		<Menu type="divider"/>
-		<Menu name="License"/>
 	</Menu>
 </MenuBar>

@@ -88,6 +88,42 @@ content {
 		color: #bbb;
 	}
 
+	.divider {
+		//background: #bbb;
+		position: relative;
+		height: 5px;
+		width: 83%;
+		overflow: hidden;
+		margin: 0 auto;
+
+		&.over {
+			top: 5px;
+			margin-top: 17px;
+
+			&:after {
+				bottom: 5px;
+			}
+		}
+		&.under {
+			bottom: 5px;
+			margin-bottom: 17px;
+
+			&:after {
+				top: 5px;
+			}
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 9px;
+			border-radius: 100%;
+			box-shadow: 0 0 5px rgba(0,0,0,.73);
+		}
+	}
+
 	.about-defiant {
 		.panel-right {
 			padding-bottom: 50px;
@@ -200,17 +236,18 @@ content {
 	}
 
 	.app-license {
-		.row-body {
-			padding: 23px 30px 25px;
+		padding: 23px 30px 25px;
 
-			.panel-left {
-				width: 10px;
-
-				.icon {
-					width: 67px;
-					height: 67px;
-				}
-			}
+		.license-text {
+			// width: 491px;
+			height: 233px;
+			overflow: auto;
+			margin: 0 auto;
+			padding: 7px 13px 21px;
+			text-align: left;
+			font-size: 13px;
+			line-height: 1.5;
+			white-space: pre;
 		}
 	}
 

@@ -113,7 +113,7 @@
 					</div>
 					<div class="field-row">
 						<div>Last updated</div>
-						<div class="modified">2020-11-23</div>
+						<div class="modified"><xsl:value-of select="@isodate" /></div>
 					</div>
 					<div class="field-row">
 						<div>License</div>
@@ -131,14 +131,11 @@
 
 <xsl:template name="app-license">
 	<div class="app-license">
-		<div class="row-body">
-			<div class="panel-left">
-				
-			</div>
-			<div class="panel-right">
-				Application License
-			</div>
-		</div>
+		
+		<div class="divider over"></div>
+		<div class="license-text"></div>
+		<div class="divider under"></div>
+
 	</div>
 </xsl:template>
 
