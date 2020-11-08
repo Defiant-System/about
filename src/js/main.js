@@ -18,7 +18,7 @@ const about = {
 			template = event.type,
 			target = Self.els.content,
 			match = `//*`,
-			app,
+			xApp,
 			height,
 			el;
 		
@@ -41,22 +41,26 @@ const about = {
 				Self.app = Self.app || event.app;
 
 				match = `sys://Application[.//meta/@name="id"][.//meta/@value="${Self.app}"]`;
+				xApp = window.bluePrint.selectSingleNode(match);
 				el = window.render({ match, template, target });
+
+				// calculate application size
+				let size = xApp.xml.replace(/ {4}/g, "").length;
+				Self.els.content.find(".size").html(defiant.formatBytes(size, 1));
 
 				height = el.height() +"px";
 				window.body.css({ height });
 
-				let xApp = window.bluePrint.selectSingleNode(`sys://Application[.//meta/@name="id" and .//meta/@value="${Self.app}"]`);
-				let size = xApp.xml.replace(/ {4}/g, "").length;
-				Self.els.content.find(".size").html(defiant.formatBytes(size, 1));
-
 				return true;
 			case "app-license":
 				// render view
+				match = `sys://Application[.//meta/@name="id"][.//meta/@value="${Self.app}"]`;
+				xApp = window.bluePrint.selectSingleNode(match);
 				el = window.render({ template, match, target });
 
 				// fetch license, if not already fetched
-				Self.License = Self.License || await window.fetch("/app/ant/textEdit/LICENSE");
+				let ns = xApp.selectSingleNode(`.//meta[@name="author"]`).getAttribute("namespace");
+				Self.License = Self.License || await window.fetch(`/app/${ns}/${Self.app}/LICENSE`);
 
 				let text = Self.License,
 					name = text.match(/^# .+$/gm)[0],
@@ -72,6 +76,7 @@ const about = {
 
 				height = el.height() +"px";
 				window.body.css({ height });
+
 				return true;
 			case "app-issues":
 			case "app-source-code":
@@ -79,6 +84,7 @@ const about = {
 
 				height = el.height() +"px";
 				window.body.css({ height });
+
 				return true;
 			case "show-license":
 				window.find(".toolbar-tool_[data-click='app-license']").trigger("click");
