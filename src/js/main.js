@@ -53,7 +53,7 @@ const about = {
 				let xApp = window.bluePrint.selectSingleNode(`sys://Application[.//meta/@name="id" and .//meta/@value="${Self.app}"]`);
 				let size = xApp.xml.replace(/ {4}/g, "").length;
 				Self.els.content.find(".size").html(defiant.formatBytes(size, 1));
-				
+
 				return true;
 			case "app-license":
 			case "app-issues":
@@ -81,6 +81,9 @@ const about = {
 				height = el.height() +"px";
 				window.body.css({ height });
 				return true;
+			case "show-license":
+				window.find(".toolbar-tool_[data-click='app-license']").trigger("click");
+				break;
 		}
 	}
 };
