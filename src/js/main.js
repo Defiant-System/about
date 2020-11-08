@@ -1,4 +1,6 @@
 
+defiant.require("./modules/marked.min.js");
+
 const about = {
 	init() {
 		// fast references
@@ -7,11 +9,11 @@ const about = {
 		};
 
 		// temp
-		setTimeout(() => {
-			window.find(".toolbar-tool_[data-click='app-license']").trigger("click");
-		}, 500);
+		// setTimeout(() => {
+		// 	window.find(".toolbar-tool_[data-click='app-license']").trigger("click");
+		// }, 500);
 	},
-	dispatch(event) {
+	async dispatch(event) {
 		let Self = about,
 			app,
 			height,
@@ -47,8 +49,11 @@ const about = {
 
 				height = el.height() +"px";
 				window.body.css({ height });
+
+				let xApp = window.bluePrint.selectSingleNode(`sys://Application[.//meta/@name="id" and .//meta/@value="${Self.app}"]`);
+				let size = xApp.xml.replace(/ {4}/g, "").length;
+				Self.els.content.find(".size").html(defiant.formatBytes(size, 1));
 				/*
-				xApp = window.bluePrint.selectSingleNode(`sys://Application[.//meta/@name="id" and .//meta/@value="${event.app}"]`);
 				name = xApp.selectSingleNode(".//meta[@name='id']").getAttribute("value");
 				namespace = xApp.selectSingleNode(".//meta[@name='author']").getAttribute("namespace");
 				Self.els.icon.css({"background-image": `url(/app/${namespace}/icons/app-icon-${name}.png)`});
@@ -60,8 +65,6 @@ const about = {
 				node = xApp.selectSingleNode(".//meta[@name='author']");
 				Self.els.author.html(node.getAttribute("value"));
 
-				let size = xApp.xml.replace(/ {4}/g, "").length;
-				Self.els.size.html(defiant.formatBytes(size, 1));
 
 				let date = new Date(+xApp.getAttribute("mDate"));
 				Self.els.modified.html(date.toISOString().slice(0, 10));
@@ -79,7 +82,19 @@ const about = {
 					target: Self.els.content,
 				});
 
-				// el.find(".license-text").html(``);
+				if (event.type === "app-license") {
+					let text = await window.fetch("~/license.md"),
+						name = text.match(/^# .+$/gm)[0],
+						version = text.match(/^version .+$/gmi)[0];
+					// update header
+					el.find("h2").html(`${name.slice(2)}<span>${version}</span>`);
+					// clear header from 
+					text = text.replace(name, "");
+					text = text.replace(version, "");
+
+					let htm = window.marked(text);
+					el.find(".license-text").html(htm);
+				}
 
 				height = el.height() +"px";
 				window.body.css({ height });

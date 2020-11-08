@@ -109,7 +109,7 @@
 					</div>
 					<div class="field-row">
 						<div>Size</div>
-						<div class="size">14.2 Kb</div>
+						<div class="size"></div>
 					</div>
 					<div class="field-row">
 						<div>Last updated</div>
@@ -132,6 +132,7 @@
 <xsl:template name="app-license">
 	<div class="app-license">
 		
+		<h2></h2>
 		<div class="divider over"></div>
 		<div class="license-text"></div>
 		<div class="divider under"></div>
