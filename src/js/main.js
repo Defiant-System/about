@@ -15,6 +15,9 @@ const about = {
 	},
 	async dispatch(event) {
 		let Self = about,
+			template = event.type,
+			target = Self.els.content,
+			match = `//*`,
 			app,
 			height,
 			el;
@@ -28,11 +31,7 @@ const about = {
 				/* falls through */
 			case "defiant-storage":
 			case "defiant-support":
-				el = window.render({
-					template: event.type,
-					match: `//*`,
-					target: Self.els.content,
-				});
+				el = window.render({ template, match, target });
 
 				height = el.height() +"px";
 				window.body.css({ height });
@@ -41,11 +40,8 @@ const about = {
 			case "about-app":
 				Self.app = Self.app || event.app;
 
-				el = window.render({
-					template: "about-app",
-					match: `sys://Application[.//meta/@name="id"][.//meta/@value="${Self.app}"]`,
-					target: Self.els.content,
-				});
+				match = `sys://Application[.//meta/@name="id"][.//meta/@value="${Self.app}"]`;
+				el = window.render({ match, template, target });
 
 				height = el.height() +"px";
 				window.body.css({ height });
@@ -56,27 +52,30 @@ const about = {
 
 				return true;
 			case "app-license":
+				// render view
+				el = window.render({ template, match, target });
+
+				// fetch license, if not already fetched
+				Self.License = Self.License || await window.fetch("/app/ant/textEdit/LICENSE");
+
+				let text = Self.License,
+					name = text.match(/^# .+$/gm)[0],
+					version = text.match(/^version .+$/gmi)[0];
+				// update header
+				el.find("h2").html(`${name.slice(2)}<span>${version}</span>`);
+				// clear header from 
+				text = text.replace(name, "");
+				text = text.replace(version, "");
+
+				let htm = window.marked(text);
+				el.find(".license-text").html(htm);
+
+				height = el.height() +"px";
+				window.body.css({ height });
+				return true;
 			case "app-issues":
 			case "app-source-code":
-				el = window.render({
-					template: event.type,
-					match: `//*`,
-					target: Self.els.content,
-				});
-
-				if (event.type === "app-license") {
-					let text = await window.fetch("~/license.md"),
-						name = text.match(/^# .+$/gm)[0],
-						version = text.match(/^version .+$/gmi)[0];
-					// update header
-					el.find("h2").html(`${name.slice(2)}<span>${version}</span>`);
-					// clear header from 
-					text = text.replace(name, "");
-					text = text.replace(version, "");
-
-					let htm = window.marked(text);
-					el.find(".license-text").html(htm);
-				}
+				el = window.render({ template, match, target });
 
 				height = el.height() +"px";
 				window.body.css({ height });
