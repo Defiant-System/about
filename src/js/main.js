@@ -9,8 +9,9 @@ const about = {
 		};
 
 		// temp
+		// this.dispatch({ type: "about-defiant" });
 		// setTimeout(() => {
-		// 	window.find(".toolbar-tool_[data-click='app-license']").trigger("click");
+		// 	window.find(".toolbar-tool_[data-click='defiant-storage']").trigger("click");
 		// }, 500);
 	},
 	async dispatch(event) {

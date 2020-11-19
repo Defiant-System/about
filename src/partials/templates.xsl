@@ -43,15 +43,16 @@
 
 
 <xsl:template name="defiant-storage">
-	<xsl:variable name="used" select="sum(//FileSystem//i/@size)"></xsl:variable>
+	<xsl:variable name="baseDir" select="//FileSystem"></xsl:variable>
+	<xsl:variable name="used" select="sum($baseDir//i/@size)"></xsl:variable>
 	<xsl:variable name="quota">
 		<xsl:call-template name="sys:storage-size">
-			<xsl:with-param name="bytes" select="//FileSystem/@quota" />
+			<xsl:with-param name="bytes" select="$baseDir/@quota" />
 		</xsl:call-template>
 	</xsl:variable>
 	<xsl:variable name="available">
 		<xsl:call-template name="sys:file-size">
-			<xsl:with-param name="bytes" select="//FileSystem/@quota - $used" />
+			<xsl:with-param name="bytes" select="$baseDir/@quota - $used" />
 		</xsl:call-template>
 	</xsl:variable>
 
@@ -67,10 +68,15 @@
 						<xsl:value-of select="$available" />
 						<xsl:text> available of </xsl:text>
 						<xsl:value-of select="$quota" />
+
+						<span class="file-count"><xsl:value-of select="count($baseDir//i)" /> files</span>
 					</h5>
 					<xsl:call-template name="sys:disc-bar"/>
 				</div>
 			</div>
+			
+			<hr/>
+
 			<div class="row-body">
 				<div class="panel-left">
 					<i class="icon" style="background-image: url(~/icons/icon-google-drive.png);"></i>
@@ -85,6 +91,9 @@
 					<xsl:call-template name="sys:disc-bar"/>
 				</div>
 			</div>
+			
+			<hr/>
+
 			<div class="row-body">
 				<div class="panel-left">
 					<i class="icon" style="background-image: url(~/icons/icon-dropbox.png);"></i>
@@ -99,6 +108,9 @@
 					<xsl:call-template name="sys:disc-bar"/>
 				</div>
 			</div>
+			
+			<hr/>
+
 			<div class="row-body">
 				<div class="panel-left">
 					<i class="icon" style="background-image: url(~/icons/icon-one-drive.png);"></i>
