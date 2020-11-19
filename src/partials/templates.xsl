@@ -58,73 +58,70 @@
 
 	<div class="cloud-storages">
 		<div class="storage">
-			<div class="row-body">
-				<div class="panel-left">
-					<i class="icon" style="background-image: url(~/icons/defiant-cloud-storage.png);"></i>
-				</div>
-				<div class="panel-right">
-					<h4>Defiant Cloud Storage</h4>
-					<h5>
-						<xsl:value-of select="$available" />
-						<xsl:text> available of </xsl:text>
-						<xsl:value-of select="$quota" />
-
-						<span class="file-count"><xsl:value-of select="count($baseDir//i)" /> files</span>
-					</h5>
-					<xsl:call-template name="sys:disc-bar"/>
-				</div>
-			</div>
+			<xsl:call-template name="defiant-storage-item">
+				<xsl:with-param name="baseDir" select="//FileSystem"/>
+			</xsl:call-template>
 			
-			<hr/>
-
-			<div class="row-body">
-				<div class="panel-left">
-					<i class="icon" style="background-image: url(~/icons/icon-google-drive.png);"></i>
-				</div>
-				<div class="panel-right">
-					<h4>Google Drive</h4>
-					<h5>
-						<xsl:value-of select="$available" />
-						<xsl:text> available of </xsl:text>
-						<xsl:value-of select="$quota" />
-					</h5>
-					<xsl:call-template name="sys:disc-bar"/>
-				</div>
-			</div>
+			<xsl:for-each select="//Settings//block[@id='external-storage']/*">
+				<xsl:call-template name="defiant-storage-item">
+					<xsl:with-param name="baseDir" select="//*[@name='Mount']/*[@name='Google Drive']"/>
+				</xsl:call-template>
+			</xsl:for-each>
 			
-			<hr/>
+		</div>
+	</div>
+</xsl:template>
 
-			<div class="row-body">
-				<div class="panel-left">
-					<i class="icon" style="background-image: url(~/icons/icon-dropbox.png);"></i>
-				</div>
-				<div class="panel-right">
-					<h4>Dropbox</h4>
-					<h5>
-						<xsl:value-of select="$available" />
-						<xsl:text> available of </xsl:text>
-						<xsl:value-of select="$quota" />
-					</h5>
-					<xsl:call-template name="sys:disc-bar"/>
-				</div>
-			</div>
-			
-			<hr/>
 
-			<div class="row-body">
-				<div class="panel-left">
-					<i class="icon" style="background-image: url(~/icons/icon-one-drive.png);"></i>
-				</div>
-				<div class="panel-right">
-					<h4>OneDrive</h4>
-					<h5>
-						<xsl:value-of select="$available" />
-						<xsl:text> available of </xsl:text>
-						<xsl:value-of select="$quota" />
-					</h5>
-					<xsl:call-template name="sys:disc-bar"/>
-				</div>
-			</div>
+<xsl:template name="defiant-storage-item">
+	<xsl:param name="baseDir" select="//FileSystem"/>
+	<xsl:variable name="exclude" select="$baseDir/*[@name != 'Mount']"/>
+	<xsl:variable name="used" select="sum($exclude//i/@size)"></xsl:variable>
+	<xsl:variable name="quota">
+		<xsl:call-template name="sys:storage-size">
+			<xsl:with-param name="bytes" select="$baseDir/@quota" />
+		</xsl:call-template>
+	</xsl:variable>
+	<xsl:variable name="available">
+		<xsl:call-template name="sys:file-size">
+			<xsl:with-param name="bytes" select="$baseDir/@quota - $used" />
+		</xsl:call-template>
+	</xsl:variable>
+	<xsl:variable name="name">
+		<xsl:choose>
+			<xsl:when test="@name"><xsl:value-of select="@name" /></xsl:when>
+			<xsl:otherwise>Defiant Cloud Storage</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	<xsl:variable name="icon">
+		<xsl:choose>
+			<xsl:when test="@icon">icon-<xsl:value-of select="@icon" /></xsl:when>
+			<xsl:otherwise>defiant-cloud-storage</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+
+	<xsl:if test="@icon"><hr/></xsl:if>
+
+	<div class="row-body">
+		<div class="panel-left">
+			<i class="icon">
+				<xsl:attribute name="style">
+					background-image: url(~/icons/<xsl:value-of select="$icon" />.png);
+				</xsl:attribute>
+			</i>
+		</div>
+		<div class="panel-right">
+			<h4><xsl:value-of select="$name" /></h4>
+			<h5>
+				<xsl:value-of select="$available" />
+				<xsl:text> available of </xsl:text>
+				<xsl:value-of select="$quota" />
+
+				<span class="file-count"><xsl:value-of select="count($exclude//i)" /> files</span>
+			</h5>
+			<xsl:call-template name="sys:disc-bar">
+				<xsl:with-param name="base" select="$baseDir" />
+			</xsl:call-template>
 		</div>
 	</div>
 </xsl:template>

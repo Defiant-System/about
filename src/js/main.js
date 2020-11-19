@@ -12,7 +12,7 @@ const about = {
 		// this.dispatch({ type: "about-defiant" });
 		// setTimeout(() => {
 		// 	window.find(".toolbar-tool_[data-click='defiant-storage']").trigger("click");
-		// }, 500);
+		// }, 100);
 	},
 	async dispatch(event) {
 		let Self = about,
