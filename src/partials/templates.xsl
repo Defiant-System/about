@@ -45,7 +45,7 @@
 <xsl:template name="defiant-storage">
 	<xsl:variable name="used" select="sum(//FileSystem//i/@size)"></xsl:variable>
 	<xsl:variable name="quota">
-		<xsl:call-template name="sys:file-size">
+		<xsl:call-template name="sys:storage-size">
 			<xsl:with-param name="bytes" select="//FileSystem/@quota" />
 		</xsl:call-template>
 	</xsl:variable>
@@ -55,19 +55,63 @@
 		</xsl:call-template>
 	</xsl:variable>
 
-	<div class="defiant-storage">
-		<div class="row-body">
-			<div class="panel-left">
-				<i class="icon" style="background-image: url(~/icons/defiant-cloud-storage.png);"></i>
+	<div class="cloud-storages">
+		<div class="storage">
+			<div class="row-body">
+				<div class="panel-left">
+					<i class="icon" style="background-image: url(~/icons/defiant-cloud-storage.png);"></i>
+				</div>
+				<div class="panel-right">
+					<h4>Defiant Cloud Storage</h4>
+					<h5>
+						<xsl:value-of select="$available" />
+						<xsl:text> available of </xsl:text>
+						<xsl:value-of select="$quota" />
+					</h5>
+					<xsl:call-template name="sys:disc-bar"/>
+				</div>
 			</div>
-			<div class="panel-right">
-				<h4>Defiant Cloud Storage</h4>
-				<h5>
-					<xsl:value-of select="$available" />
-					<xsl:text> available of </xsl:text>
-					<xsl:value-of select="$quota" />
-				</h5>
-				<xsl:call-template name="sys:disc-bar"/>
+			<div class="row-body">
+				<div class="panel-left">
+					<i class="icon" style="background-image: url(~/icons/icon-google-drive.png);"></i>
+				</div>
+				<div class="panel-right">
+					<h4>Google Drive</h4>
+					<h5>
+						<xsl:value-of select="$available" />
+						<xsl:text> available of </xsl:text>
+						<xsl:value-of select="$quota" />
+					</h5>
+					<xsl:call-template name="sys:disc-bar"/>
+				</div>
+			</div>
+			<div class="row-body">
+				<div class="panel-left">
+					<i class="icon" style="background-image: url(~/icons/icon-dropbox.png);"></i>
+				</div>
+				<div class="panel-right">
+					<h4>Dropbox</h4>
+					<h5>
+						<xsl:value-of select="$available" />
+						<xsl:text> available of </xsl:text>
+						<xsl:value-of select="$quota" />
+					</h5>
+					<xsl:call-template name="sys:disc-bar"/>
+				</div>
+			</div>
+			<div class="row-body">
+				<div class="panel-left">
+					<i class="icon" style="background-image: url(~/icons/icon-one-drive.png);"></i>
+				</div>
+				<div class="panel-right">
+					<h4>OneDrive</h4>
+					<h5>
+						<xsl:value-of select="$available" />
+						<xsl:text> available of </xsl:text>
+						<xsl:value-of select="$quota" />
+					</h5>
+					<xsl:call-template name="sys:disc-bar"/>
+				</div>
 			</div>
 		</div>
 	</div>
