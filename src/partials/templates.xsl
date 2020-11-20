@@ -121,6 +121,7 @@
 			</h5>
 			<xsl:call-template name="sys:disc-bar">
 				<xsl:with-param name="base" select="$baseDir" />
+				<xsl:with-param name="exclude" select="$baseDir/*[@name != 'Mount']" />
 			</xsl:call-template>
 		</div>
 	</div>
