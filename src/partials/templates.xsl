@@ -64,7 +64,7 @@
 			
 			<xsl:for-each select="//Settings//block[@id='external-storage']/*">
 				<xsl:call-template name="defiant-storage-item">
-					<xsl:with-param name="baseDir" select="//*[@name='Mount']/*[@name='Google Drive']"/>
+					<xsl:with-param name="baseDir" select="//*[@name='Mount']/*[@name=current()/@name]"/>
 				</xsl:call-template>
 			</xsl:for-each>
 			
