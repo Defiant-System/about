@@ -1,5 +1,5 @@
 
-defiant.require("./modules/marked.min.js");
+@import "./modules/marked.min.js";
 
 const about = {
 	init() {
