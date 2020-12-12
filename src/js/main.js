@@ -41,13 +41,11 @@ const about = {
 			case "about-app":
 				Self.app = Self.app || event.app;
 
-				match = `sys://Application[.//meta/@name="id"][.//meta/@value="${Self.app}"]`;
-				xApp = window.bluePrint.selectSingleNode(match);
-				el = window.render({ match, template, target });
+				let changePath = `//xsl:variable[@name="app"]`,
+					changeSelect = `//Settings/Apps/i[@ns="ant"][@id="${Self.app}"]`;
 
-				// calculate application size
-				let size = xApp.xml.replace(/ {4}/g, "").length;
-				Self.els.content.find(".size").html(defiant.formatBytes(size, 1));
+				// render overview content
+				el = window.render({ template, changePath, changeSelect, target });
 
 				height = el.height() +"px";
 				window.body.css({ height });

@@ -143,36 +143,48 @@
 
 
 <xsl:template name="about-app">
+	<xsl:variable name="app"></xsl:variable>
 	<div class="about-app">
 		<div class="row-body">
 			<div class="panel-left">
 				<i class="icon">
 					<xsl:attribute name="style">
-						background-image: url(/app/<xsl:value-of select=".//meta[@name='author']/@namespace" />/icons/app-icon-<xsl:value-of select=".//meta[@name='id']/@value" />.png);
+						background-image: url(/app/<xsl:value-of select="$app/@ns" />/icons/app-icon-<xsl:value-of select="$app/@id" />.png);
 					</xsl:attribute>
 				</i>
 			</div>
 			<div class="panel-right">
-				<h1><xsl:value-of select=".//meta[@name='title']/@value" /></h1>
-				<h5>Version <span><xsl:value-of select=".//meta[@name='title']/@version" /></span></h5>
+				<h1><xsl:value-of select="$app/@name" /></h1>
+				<h5>Version <span><xsl:value-of select="$app/@version" /></span></h5>
 
 				<div class="details">
 					<div class="field-row">
 						<div>Author</div>
-						<div class="author"><xsl:value-of select=".//meta[@name='author']/@value" /></div>
+						<div class="author"><xsl:value-of select="$app/@author" /></div>
 					</div>
 					<div class="field-row">
 						<div>Size</div>
-						<div class="size"></div>
+						<div class="size">
+							<xsl:call-template name="sys:file-size">
+								<xsl:with-param name="bytes" select="$app/@size" />
+							</xsl:call-template>
+						</div>
 					</div>
 					<div class="field-row">
 						<div>Last updated</div>
-						<div class="modified"><xsl:value-of select="@isodate" /></div>
+						<div class="modified">
+							<span>
+								<xsl:value-of select="substring( $app/@isodate, 0, 11)" />
+							</span>
+							<span>
+								<xsl:value-of select="substring( $app/@isodate, 11)" />
+							</span>
+						</div>
 					</div>
 					<div class="field-row">
 						<div>License</div>
 						<div class="license" data-click="show-license">
-							<xsl:value-of select=".//meta[@name='license']/@value" />
+							<xsl:value-of select="$app/@license" />
 						</div>
 					</div>
 				</div>
