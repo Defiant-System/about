@@ -149,7 +149,7 @@
 			<div class="panel-left">
 				<i class="icon">
 					<xsl:attribute name="style">
-						background-image: url(/app/<xsl:value-of select="$app/@ns" />/icons/app-icon-<xsl:value-of select="$app/@id" />.png);
+						background-image: url(/app/<xsl:value-of select="$app/@ns" />/<xsl:value-of select="$app/@id" />/icon.svg);
 					</xsl:attribute>
 				</i>
 			</div>
