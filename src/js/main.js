@@ -39,10 +39,11 @@ const about = {
 				return true;
 			// About app
 			case "about-app":
+				Self.ns = Self.ns || event.ns;
 				Self.app = Self.app || event.app;
 
 				let changePath = `//xsl:variable[@name="app"]`,
-					changeSelect = `//Settings/Apps/i[@ns="ant"][@id="${Self.app}"]`;
+					changeSelect = `//Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
 
 				// render overview content
 				el = window.render({ template, changePath, changeSelect, target });
