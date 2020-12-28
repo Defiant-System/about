@@ -45,6 +45,9 @@ const about = {
 				let changePath = `//xsl:variable[@name="app"]`,
 					changeSelect = `//Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
 
+				// make sure app icons is in ledger
+				await defiant.loadIcon({ ns: Self.ns, id: Self.app });
+
 				// render overview content
 				el = window.render({ template, changePath, changeSelect, target });
 
@@ -54,13 +57,11 @@ const about = {
 				return true;
 			case "app-license":
 				// render view
-				match = `sys://Application[.//meta/@name="id"][.//meta/@value="${Self.app}"]`;
-				xApp = window.bluePrint.selectSingleNode(match);
+				match = `sys://Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
 				el = window.render({ template, match, target });
 
 				// fetch license, if not already fetched
-				let ns = xApp.selectSingleNode(`.//meta[@name="author"]`).getAttribute("namespace");
-				Self.License = Self.License || await window.fetch(`/app/${ns}/${Self.app}/LICENSE`);
+				Self.License = Self.License || await window.fetch(`/app/${Self.ns}/${Self.app}/LICENSE`);
 
 				let text = Self.License,
 					name = text.match(/^# .+$/gm)[0],
