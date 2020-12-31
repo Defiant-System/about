@@ -46,7 +46,7 @@ const about = {
 					changeSelect = `//Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
 
 				// make sure app icons is in ledger
-				await defiant.loadIcon({ ns: Self.ns, id: Self.app });
+				await defiant.message({ type: "load-app-icon", ns: Self.ns, id: Self.app });
 
 				// render overview content
 				el = window.render({ template, changePath, changeSelect, target });
