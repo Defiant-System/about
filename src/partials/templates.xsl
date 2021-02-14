@@ -28,11 +28,14 @@
 					</div>
 					<div class="field-row">
 						<div>Licensed to</div>
-						<div class="modified">User name</div>
+						<div class="modified"><xsl:value-of select="//Settings/User/@name" /></div>
 					</div>
 					<div class="field-row">
 						<div>Account type</div>
-						<div class="modified">Free</div>
+						<div class="modified"><xsl:choose>
+							<xsl:when test="//Settings/User/@account_type = 1">Premium</xsl:when>
+							<xsl:otherwise>Free</xsl:otherwise>
+						</xsl:choose></div>
 					</div>
 				</div>
 			</div>
