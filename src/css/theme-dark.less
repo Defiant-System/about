@@ -1,0 +1,99 @@
+
+&[data-theme="dark"] {
+	content {
+		text-shadow: var( --text-shadow );
+
+		.row-body {
+			.panel-right {
+
+				h1 {
+					color: var( --content-fg );
+					filter: brightness(1.15);
+				}
+
+				h4 {
+					color: var( --content-fg );
+				}
+
+				h5 {
+					color: var( --content-fg );
+					filter: brightness(.75);
+				}
+
+				.details {
+					.field-row {
+						div {
+							&:nth-child(1) {
+								color: var( --content-fg );
+								filter: brightness(.85);
+							}
+
+							&:nth-child(2) {
+								color: var( --content-fg );
+							}
+
+							&[data-click] {
+								color: #0ef;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.row-foot {
+			color: var( --content-fg );
+			opacity: .5;
+		}
+
+		.app-license {
+			h2 {
+				color: var( --content-fg );
+
+				span {
+					color: var( --content-fg );
+					filter: brightness(.75);
+				}
+			}
+
+			.license-text {
+				h1, h2, h3 {
+					color: var( --content-fg );
+				}
+
+				h4 {
+					color: var( --content-fg );
+				}
+
+				p {
+					color: var( --content-fg );
+					filter: brightness(.85);
+				}
+			}
+		}
+
+		.cloud-storages {
+			.row-body {
+				.panel-right {
+					.disc-bar {
+						background: rgba(0,0,0,.15);
+						box-shadow: 0 0 0 1px rgba(0,0,0,.25),
+									0 2px 0 rgba(255,255,255,.2);
+
+						div {
+							span {
+								background: rgba(200,200,200,.9);
+								color: #222;
+								text-shadow: 0 0 0;
+
+								&:before {
+									border-top-color: rgba(200,200,200,.9);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

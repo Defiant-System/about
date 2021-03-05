@@ -1,4 +1,8 @@
 
+// for dark theme
+@import "theme-dark";
+
+
 transition: all 200ms;
 
 content {
@@ -73,6 +77,7 @@ content {
 							width: 90px;
 							color: #666;
 						}
+
 						&:nth-child(2) {
 							flex: 1;
 							color: #111;
@@ -214,6 +219,15 @@ content {
 						max-width: 0;
 						animation: discSize 300ms 200ms linear forwards;
 
+						&:nth-child(1) {
+							border-radius: 3px 0 0 3px;
+						}
+
+						&[style*="width: 0.0"]:nth-child(1) + div,
+						&[style^="width: 0.0"]:nth-child(1) + div {
+							border-radius: 3px 0 0 3px;
+						}
+									
 						&:hover span {
 							visibility: visible;
 							animation: pop 130ms linear forwards;
