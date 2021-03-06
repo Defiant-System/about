@@ -146,7 +146,7 @@
 
 
 <xsl:template name="about-app">
-	<xsl:variable name="app"></xsl:variable>
+	<xsl:variable name="app" />
 	<div class="about-app">
 		<div class="row-body">
 			<div class="panel-left">
@@ -161,10 +161,18 @@
 				<h5>Version <span><xsl:value-of select="$app/@version" /></span></h5>
 
 				<div class="details">
-					<div class="field-row">
-						<div>Author</div>
-						<div class="author"><xsl:value-of select="$app/@author" /></div>
-					</div>
+					<xsl:if test="$app/@author">
+						<div class="field-row">
+							<div>Author</div>
+							<div class="author"><xsl:value-of select="$app/@author" /></div>
+						</div>
+					</xsl:if>
+					<xsl:if test="$app/@ported">
+						<div class="field-row">
+							<div>Ported by</div>
+							<div class="author"><xsl:value-of select="$app/@ported" /></div>
+						</div>
+					</xsl:if>
 					<div class="field-row">
 						<div>Size</div>
 						<div class="size">

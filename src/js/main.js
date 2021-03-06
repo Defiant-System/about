@@ -20,6 +20,7 @@ const about = {
 			target = Self.els.content,
 			match = `//*`,
 			xApp,
+			xPath,
 			height,
 			el;
 		
@@ -41,6 +42,18 @@ const about = {
 			case "about-app":
 				Self.ns = Self.ns || event.ns;
 				Self.app = Self.app || event.app;
+
+				// copy value of "ported" from meta
+				xPath = `sys://meta[@name="id"][@value="${Self.app}"]/../meta[@namespace="${Self.ns}"]/../..`;
+				xApp = window.bluePrint.selectSingleNode(xPath);
+				if (xApp) {
+					xPath = `sys://Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
+					let sApp = window.bluePrint.selectSingleNode(xPath),
+						xPorted = xApp.selectSingleNode(".//meta[@ported]");
+					if (xPorted && !sApp.getAttribute("ported")) {
+						sApp.setAttribute("ported", xPorted.getAttribute("ported"));
+					}
+				}
 
 				let changePath = `//xsl:variable[@name="app"]`,
 					changeSelect = `//Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
