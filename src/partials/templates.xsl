@@ -65,7 +65,7 @@
 				<xsl:with-param name="baseDir" select="//FileSystem"/>
 			</xsl:call-template>
 			
-			<xsl:for-each select="//Settings//block[@id='external-storage']/*">
+			<xsl:for-each select="//Settings/Registry/*[@id='fs-cloud-storage']/*">
 				<xsl:call-template name="defiant-storage-item">
 					<xsl:with-param name="baseDir" select="//*[@name='Mount']/*[@name=current()/@name]"/>
 				</xsl:call-template>
