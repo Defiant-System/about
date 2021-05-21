@@ -55,12 +55,11 @@ const about = {
 					}
 				}
 
-				let changePath = `//xsl:variable[@name="app"]`,
-					changeSelect = `//Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
-
 				// make sure app icons is in ledger
 				await defiant.message({ type: "load-app-icon", ns: Self.ns, id: Self.app });
 
+				let changePath = `//xsl:variable[@name="app"]`,
+					changeSelect = `//Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
 				// render overview content
 				el = window.render({ template, changePath, changeSelect, target });
 
