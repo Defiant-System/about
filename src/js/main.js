@@ -10,9 +10,9 @@ const about = {
 
 		// temp
 		// this.dispatch({ type: "about-defiant" });
-		// setTimeout(() => {
-		// 	window.find(".toolbar-tool_[data-click='defiant-storage']").trigger("click");
-		// }, 100);
+		setTimeout(() => {
+			window.find(".toolbar-tool_[data-click='app-source-code']").trigger("click");
+		}, 500);
 	},
 	async dispatch(event) {
 		let Self = about,
@@ -94,6 +94,9 @@ const about = {
 			case "app-issues":
 			case "app-source-code":
 				el = window.render({ template, match, target });
+
+				let tmp = await defiant.message({ type: "get-app-stat", ns: Self.ns, id: Self.app });
+				console.log( tmp );
 
 				height = el.height() +"px";
 				window.body.css({ height });

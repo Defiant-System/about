@@ -236,10 +236,22 @@
 	<div class="app-source-code">
 		<div class="row-body">
 			<div class="panel-left">
-				
+				<i class="icon" style="background-image: url(/app/sys/about/icons/defiant-cloud-storage.png);"></i>
 			</div>
 			<div class="panel-right">
-				Application Source Code
+				<div class="panel-right">
+					<h4>Defiant Cloud Storage</h4>
+					<h5>
+						972.2 MB available of 1 GB<span class="file-count">121 files</span>
+					</h5>
+					<div class="disc-bar">
+						<div style="background: #7676fe; width: 0.0%; "><span>Video</span></div>
+						<div style="background: #69a5e1; width: 4.6%; "><span>Audio</span></div>
+						<div style="background: #e97474; width: 0.0%; "><span>Documents</span></div>
+						<div style="background: #ff9800; width: 0.2%; "><span>Images</span></div>
+						<div style="background: #b4b4b4; width: 0.0%; "><span>Other</span></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
