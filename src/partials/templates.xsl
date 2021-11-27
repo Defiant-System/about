@@ -239,19 +239,30 @@
 				<i class="icon" style="background-image: url(~/icons/icon-github.png);"></i>
 			</div>
 			<div class="panel-right">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				<h3>Repository</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				</p>
+				
 				<div class="divider simple"></div>
-				Repository<br/>
-				<a href="https://github.com/Defiant-System/about" target="_new">github.com/Defiant-System/about</a>
 				
-				<br/><br/>
-				
-				96 Stars
-				<br/><br/>
+				<div class="btn-link" href="#" target="_new">
+					<i class="icon-code"></i>
+					<span>Code</span>
+				</div>
 
-				Issues: 4<br/>
-				<button>Report issue</button>
-				<br/><br/>
+				<div class="btn-link" href="#" target="_new">
+					<i class="icon-star"></i>
+					<span>96 Stars</span>
+				</div>
+
+				<div class="btn-link" href="#" target="_new">
+					<i class="icon-issue"></i>
+					<span>4 Issues</span>
+					<span>Report issue</span>
+				</div>
+
+				<div class="divider simple"></div>
 
 				<h4>Source files</h4>
 				<h5>
