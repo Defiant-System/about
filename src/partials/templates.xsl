@@ -218,7 +218,7 @@
 </xsl:template>
 
 
-<xsl:template name="app-issues">
+<!-- <xsl:template name="app-issues">
 	<div class="app-issues">
 		<div class="row-body">
 			<div class="panel-left">
@@ -229,28 +229,40 @@
 			</div>
 		</div>
 	</div>
-</xsl:template>
+</xsl:template> -->
 
 
 <xsl:template name="app-source-code">
 	<div class="app-source-code">
 		<div class="row-body">
 			<div class="panel-left">
-				<i class="icon" style="background-image: url(/app/sys/about/icons/defiant-cloud-storage.png);"></i>
+				<i class="icon" style="background-image: url(~/icons/icon-github.png);"></i>
 			</div>
 			<div class="panel-right">
-				<div class="panel-right">
-					<h4>Cached files</h4>
-					<h5>
-						213 KB<span class="file-count">67 files</span>
-					</h5>
-					<div class="disc-bar">
-						<div style="background: #7676fe; width: 10.0%; "><span>Image files</span></div>
-						<div style="background: #69a5e1; width: 84.0%; "><span>JS files</span></div>
-						<div style="background: #e97474; width: 5.0%; "><span>HTML files</span></div>
-						<div style="background: #ff9800; width: 6.0%; "><span>CSS files</span></div>
-						<div style="background: #b4b4b4; flex: 1; "><span>Other files</span></div>
-					</div>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				<div class="divider simple"></div>
+				Repository<br/>
+				<a href="https://github.com/Defiant-System/about" target="_new">github.com/Defiant-System/about</a>
+				
+				<br/><br/>
+				
+				96 Stars
+				<br/><br/>
+
+				Issues: 4<br/>
+				<button>Report issue</button>
+				<br/><br/>
+
+				<h4>Source files</h4>
+				<h5>
+					213 KB<span class="file-count">67 files</span>
+				</h5>
+				<div class="disc-bar">
+					<div style="background: #7676fe; width: 10.0%; "><span>Image files</span></div>
+					<div style="background: #69a5e1; width: 84.0%; "><span>JS files</span></div>
+					<div style="background: #e97474; width: 5.0%; "><span>HTML files</span></div>
+					<div style="background: #ff9800; width: 6.0%; "><span>CSS files</span></div>
+					<div style="background: #dd3; flex: 1; "><span>Other files</span></div>
 				</div>
 			</div>
 		</div>

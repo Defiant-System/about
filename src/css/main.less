@@ -130,6 +130,7 @@ content {
 				bottom: 5px;
 			}
 		}
+
 		&.under {
 			bottom: 5px;
 			margin-bottom: 7px;
@@ -137,6 +138,14 @@ content {
 			&:after {
 				top: 5px;
 			}
+		}
+		
+		&.simple {
+			height: 1px;
+			margin: 15px 0;
+			background: linear-gradient(to left, transparent, #33333350, transparent);
+
+			&:after { display: none; }
 		}
 
 		&:after {
@@ -266,31 +275,35 @@ content {
 		}
 	}
 
-	.app-issues {
-		.row-body {
-			padding: 23px 30px 25px;
+	// .app-issues {
+	// 	.row-body {
+	// 		padding: 23px 30px 25px;
 
-			.panel-left {
-				width: 10px;
+	// 		.panel-left {
+	// 			width: 10px;
 
-				.icon {
-					width: 67px;
-					height: 67px;
-				}
-			}
-		}
-	}
+	// 			.icon {
+	// 				width: 67px;
+	// 				height: 67px;
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 	.app-source-code {
 		.row-body {
-			// padding: 23px 30px 25px;
-			padding: 17px 29px 19px 23px;
+			padding: 17px 73px 31px 53px;
 
 			&:nth-child(1) {
 				.panel-left .icon {
-					width: 53px;
-					height: 53px;
+					opacity: .2;
+					width: 55px;
+					height: 55px;
 				}
+			}
+
+			button {
+				width: auto;
 			}
 
 			.panel-left {

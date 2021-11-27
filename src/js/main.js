@@ -91,12 +91,12 @@ const about = {
 				window.body.css({ height });
 
 				return true;
-			case "app-issues":
+			// case "app-issues":
 			case "app-source-code":
 				el = window.render({ template, match, target });
 
-				let tmp = await defiant.message({ type: "get-app-stat", ns: Self.ns, id: Self.app });
-				console.log( tmp );
+				// let tmp = await defiant.message({ type: "get-app-stat", ns: Self.ns, id: Self.app });
+				// console.log( tmp );
 
 				height = el.height() +"px";
 				window.body.css({ height });
