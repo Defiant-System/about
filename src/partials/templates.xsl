@@ -241,25 +241,26 @@
 			<div class="panel-right">
 				<h3>Repository</h3>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					The source code of this application is available at Github. You can edit and continue its development locally on your computer by using the Defiant Command Line Interface. To install <b>defiant-cli</b>, do following;<br/>
 				</p>
+				<code>npm install defiant-cli -g</code>
 				
-				<div class="divider simple"></div>
-				
-				<div class="btn-link" href="#" target="_new">
-					<i class="icon-code"></i>
-					<span>Code</span>
-				</div>
+				<div class="link-buttons">
+					<div class="btn-link">
+						<i class="icon-code"></i>
+						<span>Code</span>
+					</div>
 
-				<div class="btn-link" href="#" target="_new">
-					<i class="icon-star"></i>
-					<span>96 Stars</span>
-				</div>
+					<div class="btn-link">
+						<i class="icon-issue"></i>
+						<span>4 Issues</span>
+						<span>Report issue</span>
+					</div>
 
-				<div class="btn-link" href="#" target="_new">
-					<i class="icon-issue"></i>
-					<span>4 Issues</span>
-					<span>Report issue</span>
+					<div class="btn-link">
+						<i class="icon-star"></i>
+						<span>96 Stars</span>
+					</div>
 				</div>
 
 				<div class="divider simple"></div>
