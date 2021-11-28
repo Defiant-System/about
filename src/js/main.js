@@ -11,7 +11,7 @@ const about = {
 		// temp
 		// this.dispatch({ type: "about-defiant" });
 		setTimeout(() => {
-			window.find(".toolbar-tool_[data-click='app-source-code']").trigger("click");
+			window.find(".toolbar-tool_[data-click='app-source-code']").trigger("mousedown").trigger("click");
 		}, 500);
 	},
 	async dispatch(event) {
@@ -35,8 +35,9 @@ const about = {
 			case "defiant-support":
 				el = window.render({ template, match, target });
 
-				height = el.height() +"px";
-				window.body.css({ height });
+				// resize window
+				window.body.css({ height: el.height() });
+
 				return true;
 			// About app
 			case "about-app":
@@ -63,8 +64,8 @@ const about = {
 				// render overview content
 				el = window.render({ template, changePath, changeSelect, target });
 
-				height = el.height() +"px";
-				window.body.css({ height });
+				// resize window
+				window.body.css({ height: el.height() });
 
 				return true;
 			case "app-license":
@@ -87,19 +88,24 @@ const about = {
 				let htm = window.marked(text);
 				el.find(".license-text").html(htm);
 
-				height = el.height() +"px";
-				window.body.css({ height });
+				// resize window
+				window.body.css({ height: el.height() });
 
 				return true;
 			// case "app-issues":
 			case "app-source-code":
 				el = window.render({ template, match, target });
 
-				// let tmp = await defiant.message({ type: "get-app-stat", ns: Self.ns, id: Self.app });
-				// console.log( tmp );
+				// resize window
+				window.body.css({ height: el.height() });
 
-				height = el.height() +"px";
-				window.body.css({ height });
+				// fetch app stats, if not already fetched
+				// let stat = await defiant.message({ type: "get-app-stat", ns: Self.ns, id: Self.app }),
+				// 	str = stat.map(x => `<i name="${x.name}" kind="${x.kind}" size="${x.size}" url="${x.url}"/>`);
+				// console.log(str.join("\n"));
+				// xPath = `sys://meta[@name="id"][@value="${Self.app}"]/../meta[@namespace="${Self.ns}"]/../..`;
+				// xApp = window.bluePrint.selectSingleNode(xPath);
+				// console.log( xApp );
 
 				return true;
 			case "show-license":

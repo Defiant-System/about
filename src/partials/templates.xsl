@@ -208,12 +208,10 @@
 
 <xsl:template name="app-license">
 	<div class="app-license">
-		
 		<h2></h2>
 		<div class="divider over"></div>
 		<div class="license-text"></div>
 		<div class="divider under"></div>
-
 	</div>
 </xsl:template>
 
@@ -233,15 +231,16 @@
 
 
 <xsl:template name="app-source-code">
+	<xsl:variable name="app" select="//applications/Application[.//meta/@name='id' and .//meta/@value='2048']"/>
 	<div class="app-source-code">
 		<div class="row-body">
 			<div class="panel-left">
 				<i class="icon" style="background-image: url(~/icons/icon-github.png);"></i>
 			</div>
 			<div class="panel-right">
-				<h3>Repository</h3>
+				<h3><xsl:value-of select="$app/Head/meta[@name='id']/@value" /></h3>
 				<p>
-					The source code of this application is available at Github. You can edit and continue its development locally on your computer by using the Defiant Command Line Interface. To install <b>defiant-cli</b>, do following;<br/>
+					The source code of this application is available at Github. You can edit and continue its development locally on your computer by using the Defiant Command Line Interface. To install <b>defiant-cli</b>, assuming you already installed NodeJS - enter following command;<br/>
 				</p>
 				<code>npm install defiant-cli -g</code>
 				
@@ -259,7 +258,7 @@
 
 					<div class="btn-link">
 						<i class="icon-star"></i>
-						<span>96 Stars</span>
+						<span>0 Stars</span>
 					</div>
 				</div>
 
@@ -278,6 +277,7 @@
 				</div>
 			</div>
 		</div>
+		<xsl:call-template name="footer-row"/>
 	</div>
 </xsl:template>
 
