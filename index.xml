@@ -23,4 +23,6 @@
 		@import "src/partials/caption-toolbar.xml"
 		@import "src/partials/menubar.xml"
 	</Head>
+
+	@import "src/partials/file-groups.xml"
 </Application>

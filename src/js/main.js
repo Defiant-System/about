@@ -94,18 +94,28 @@ const about = {
 				return true;
 			// case "app-issues":
 			case "app-source-code":
+				// fetch app stats, if not already fetched
+				let stat = await defiant.message({ type: "get-app-stat", ns: Self.ns, id: Self.app }),
+					total = stat.map(x => +x.size).reduce((a, b) => a + b, 0),
+					other = total;
+				// calculate file group sizes
+				window.bluePrint.selectNodes(`//FileGroups/i`).map(xGroup => {
+					let gTotal = 0;
+					xGroup.selectNodes(`./i[@kind]`).map(x => {
+						gTotal += stat.filter(f => f.kind === x.getAttribute("kind"))
+										.map(x => +x.size).reduce((a, b) => a + b, 0);
+					});
+					if (xGroup.getAttribute("name") === "Other") {
+						xGroup.setAttribute("width", Math.round(other/total * 100));
+					} else {
+						other -= gTotal;
+						xGroup.setAttribute("width", Math.round(gTotal/total * 100));
+					}
+				});
+				// render contents
 				el = window.render({ template, match, target });
-
 				// resize window
 				window.body.css({ height: el.height() });
-
-				// fetch app stats, if not already fetched
-				// let stat = await defiant.message({ type: "get-app-stat", ns: Self.ns, id: Self.app }),
-				// 	str = stat.map(x => `<i name="${x.name}" kind="${x.kind}" size="${x.size}" url="${x.url}"/>`);
-				// console.log(str.join("\n"));
-				// xPath = `sys://meta[@name="id"][@value="${Self.app}"]/../meta[@namespace="${Self.ns}"]/../..`;
-				// xApp = window.bluePrint.selectSingleNode(xPath);
-				// console.log( xApp );
 
 				return true;
 			case "show-license":

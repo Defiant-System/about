@@ -238,9 +238,12 @@
 				<i class="icon" style="background-image: url(~/icons/icon-github.png);"></i>
 			</div>
 			<div class="panel-right">
-				<h3><xsl:value-of select="$app/Head/meta[@name='id']/@value" /></h3>
+				<h3>Repository</h3>
 				<p>
-					The source code of this application is available at Github. You can edit and continue its development locally on your computer by using the Defiant Command Line Interface. To install <b>defiant-cli</b>, assuming you already installed NodeJS - enter following command;<br/>
+					The source code of <b><xsl:value-of select="$app/Head/meta[@name='id']/@value" /></b> 
+					is available at Github. You can edit and continue its development locally on your 
+					computer by using the Defiant Command Line Interface. To install <b>defiant-cli</b>, 
+					assuming you already installed NodeJS - enter following command in terminal shell;<br/>
 				</p>
 				<code>npm install defiant-cli -g</code>
 				
@@ -264,16 +267,23 @@
 
 				<div class="divider simple"></div>
 
-				<h4>Source files</h4>
+				<h4>Package Contents</h4>
 				<h5>
-					213 KB<span class="file-count">67 files</span>
+					<xsl:call-template name="sys:file-size">
+						<xsl:with-param name="bytes" select="sum( $app/Head/meta[@name='stat']/i/@size )" />
+					</xsl:call-template>
+					<span class="file-count"><xsl:value-of select="count( $app/Head/meta[@name='stat']/i )" /> files</span>
 				</h5>
 				<div class="disc-bar">
-					<div style="background: #7676fe; width: 10.0%; "><span>Image files</span></div>
-					<div style="background: #69a5e1; width: 84.0%; "><span>JS files</span></div>
-					<div style="background: #e97474; width: 5.0%; "><span>HTML files</span></div>
-					<div style="background: #ff9800; width: 6.0%; "><span>CSS files</span></div>
-					<div style="background: #dd3; flex: 1; "><span>Other files</span></div>
+					<xsl:for-each select="//FileGroups/i">
+						<div>
+							<xsl:attribute name="style">
+								background: <xsl:value-of select="@color"/>;
+								width: <xsl:value-of select="@width"/>%;
+							</xsl:attribute>
+							<span><xsl:value-of select="@name"/> files</span>
+						</div>
+					</xsl:for-each>
 				</div>
 			</div>
 		</div>
