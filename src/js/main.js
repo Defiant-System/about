@@ -10,9 +10,9 @@ const about = {
 
 		// temp
 		// this.dispatch({ type: "about-defiant" });
-		setTimeout(() => {
-			window.find(".toolbar-tool_[data-click='app-source-code']").trigger("mousedown").trigger("click");
-		}, 500);
+		// setTimeout(() => {
+		// 	window.find(".toolbar-tool_[data-click='app-source-code']").trigger("mousedown").trigger("click");
+		// }, 500);
 	},
 	async dispatch(event) {
 		let Self = about,
@@ -94,24 +94,41 @@ const about = {
 				return true;
 			// case "app-issues":
 			case "app-source-code":
+				// copy value of "ported" from meta
+				xPath = `sys://meta[@name="id"][@value="${Self.app}"]/../meta[@namespace="${Self.ns}"]/../..`;
+				xApp = window.bluePrint.selectSingleNode(xPath);
+
 				// fetch app stats, if not already fetched
-				let stat = await defiant.message({ type: "get-app-stat", ns: Self.ns, id: Self.app }),
+				let appName = xApp.selectSingleNode(`.//meta[@name="title"]`).getAttribute("value"),
+					stat = await defiant.message({ type: "get-app-stat", ns: Self.ns, id: Self.app }),
 					total = stat.map(x => +x.size).reduce((a, b) => a + b, 0),
-					other = total;
+					fGroups = window.bluePrint.selectSingleNode(`//FileGroups`),
+					other = 100;
+
+				// add script
+				stat.push({ name: "main.js", kind: "js", size: xApp.selectSingleNode(`./script`).textContent.length });
+				// add style
+				stat.push({ name: "main.css", kind: "css", size: xApp.selectSingleNode(`./style`).textContent.length });
+				
 				// calculate file group sizes
-				window.bluePrint.selectNodes(`//FileGroups/i`).map(xGroup => {
+				fGroups.selectNodes(`./i`).map(xGroup => {
 					let gTotal = 0;
 					xGroup.selectNodes(`./i[@kind]`).map(x => {
 						gTotal += stat.filter(f => f.kind === x.getAttribute("kind"))
 										.map(x => +x.size).reduce((a, b) => a + b, 0);
 					});
 					if (xGroup.getAttribute("name") === "Other") {
-						xGroup.setAttribute("width", Math.round(other/total * 100));
+						xGroup.setAttribute("width", other);
 					} else {
+						gTotal = Math.round(gTotal/total * 100);
 						other -= gTotal;
-						xGroup.setAttribute("width", Math.round(gTotal/total * 100));
+						xGroup.setAttribute("width", gTotal);
 					}
 				});
+				// contents data
+				fGroups.setAttribute("total", total);
+				fGroups.setAttribute("files", stat.length);
+				fGroups.setAttribute("appName", appName);
 				// render contents
 				el = window.render({ template, match, target });
 				// resize window

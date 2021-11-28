@@ -231,7 +231,6 @@
 
 
 <xsl:template name="app-source-code">
-	<xsl:variable name="app" select="//applications/Application[.//meta/@name='id' and .//meta/@value='2048']"/>
 	<div class="app-source-code">
 		<div class="row-body">
 			<div class="panel-left">
@@ -240,7 +239,7 @@
 			<div class="panel-right">
 				<h3>Repository</h3>
 				<p>
-					The source code of <b><xsl:value-of select="$app/Head/meta[@name='id']/@value" /></b> 
+					The source code of <b><xsl:value-of select="//FileGroups/@appName" /></b> 
 					is available at Github. You can edit and continue its development locally on your 
 					computer by using the Defiant Command Line Interface. To install <b>defiant-cli</b>, 
 					assuming you already installed NodeJS - enter following command in terminal shell;<br/>
@@ -270,9 +269,9 @@
 				<h4>Package Contents</h4>
 				<h5>
 					<xsl:call-template name="sys:file-size">
-						<xsl:with-param name="bytes" select="sum( $app/Head/meta[@name='stat']/i/@size )" />
+						<xsl:with-param name="bytes" select="//FileGroups/@total" />
 					</xsl:call-template>
-					<span class="file-count"><xsl:value-of select="count( $app/Head/meta[@name='stat']/i )" /> files</span>
+					<span class="file-count"><xsl:value-of select="//FileGroups/@files" /> files</span>
 				</h5>
 				<div class="disc-bar">
 					<xsl:for-each select="//FileGroups/i">
