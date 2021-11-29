@@ -117,9 +117,7 @@ const about = {
 						gTotal += stat.filter(f => f.kind === x.getAttribute("kind"))
 										.map(x => +x.size).reduce((a, b) => a + b, 0);
 					});
-					if (xGroup.getAttribute("name") === "Other") {
-						xGroup.setAttribute("width", other);
-					} else {
+					if (xGroup.getAttribute("name") !== "Other") {
 						gTotal = Math.round(gTotal/total * 100);
 						other -= gTotal;
 						xGroup.setAttribute("width", gTotal);

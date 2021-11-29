@@ -278,7 +278,7 @@
 						<div>
 							<xsl:attribute name="style">
 								background: <xsl:value-of select="@color"/>;
-								width: <xsl:value-of select="@width"/>%;
+								<xsl:if test="@width">width: <xsl:value-of select="@width"/>%;</xsl:if>
 							</xsl:attribute>
 							<span><xsl:value-of select="@name"/> files</span>
 						</div>
