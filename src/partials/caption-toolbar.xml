@@ -3,7 +3,8 @@
 		<Options class="defiant">
 			<Tool name="Overview" click="about-defiant" state="active"/>
 			<Tool name="Storage" click="defiant-storage"/>
-			<Tool name="Support" click="defiant-support"/>
+			<Tool name="EULA" click="defiant-eula"/>
+			<Tool name="Privacy Policy" click="defiant-privacy-policy"/>
 		</Options>
 		<Options class="app">
 			<Tool name="Overview" click="about-app" state="active"/>

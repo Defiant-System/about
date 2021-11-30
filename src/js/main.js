@@ -12,7 +12,7 @@ const about = {
 		// this.dispatch({ type: "about-defiant" });
 		setTimeout(() => {
 			// window.find(".toolbar-tool_[data-click='app-source-code']").trigger("mousedown").trigger("click");
-			window.find(".toolbar-tool_[data-click='defiant-support']").trigger("mousedown").trigger("click");
+			window.find(".toolbar-tool_[data-click='defiant-eula']").trigger("mousedown").trigger("click");
 		}, 500);
 	},
 	async dispatch(event) {
@@ -33,7 +33,8 @@ const about = {
 				window.find(".toolbar-group_").addClass("about-defiant");
 				/* falls through */
 			case "defiant-storage":
-			case "defiant-support":
+			case "defiant-eula":
+			case "defiant-privacy-policy":
 				el = window.render({ template, match, target });
 
 				// resize window

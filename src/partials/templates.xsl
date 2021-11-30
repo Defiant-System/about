@@ -131,19 +131,49 @@
 </xsl:template>
 
 
-<xsl:template name="defiant-support">
-	<div class="defiant-support">
+<xsl:template name="defiant-eula">
+	<div class="defiant-eula">
 		<div class="row-body">
 			<div class="panel-left">
 				<i class="icon" style="background-image: url(~/icons/defiant-logo.png);"></i>
 			</div>
 			<div class="panel-right">
-				<h3>State of Development</h3>
+				<h2>End User License Agreement</h2>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					This End-User License Agreement (EULA) is a legal agreement between you (either an individual or a single entity) and Defiant System AB, which includes the computer software and associated media, printed materials, and "online" or electronic documentation ("SOFTWARE PRODUCT") or "Defiant System".
 				</p>
+				<p>
+					By utilizing, viewing, or otherwise using the SOFTWARE PRODUCT, you agree to be bound by the terms of this EULA.
+				</p>
+				<p>
+					If you do not agree to the terms of this EULA, do not use the SOFTWARE PRODUCT.
+				</p>
+
+				<h3>Terms of use</h3>
+				<ul>
+					<li>
+						You are allowed to use this software as is, through your personal user account. You are not allowed to share your account with others, unless we explicitly grant you the permission to share it.
+						At such time as when your account has been suspended, you must destroy all copies of documentation, associated media, printed materials and copyrighted software source code you might have obtained, either directly or indirectly.
+					</li>
+					<li>
+						You are not allowed to copy any documentation, associated media, printed materials or software source code related to Defiant System.
+					</li>
+					<li>
+						You understand that this is beta quality software. Therefore, we can not be held accountable for any bugs or errors in the source code leading to either loss of data or malfunctioning features.
+					</li>
+				</ul>
 			</div>
 		</div>
+	</div>
+</xsl:template>
+
+
+<xsl:template name="defiant-privacy-policy">
+	<div class="defiant-privacy-policy">
+		<h2>Privacy Policy</h2>
+		<div class="divider over"></div>
+		<div class="license-text"></div>
+		<div class="divider under"></div>
 	</div>
 </xsl:template>
 
