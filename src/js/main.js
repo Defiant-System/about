@@ -10,9 +10,10 @@ const about = {
 
 		// temp
 		// this.dispatch({ type: "about-defiant" });
-		// setTimeout(() => {
-		// 	window.find(".toolbar-tool_[data-click='app-source-code']").trigger("mousedown").trigger("click");
-		// }, 500);
+		setTimeout(() => {
+			// window.find(".toolbar-tool_[data-click='app-source-code']").trigger("mousedown").trigger("click");
+			window.find(".toolbar-tool_[data-click='defiant-support']").trigger("mousedown").trigger("click");
+		}, 500);
 	},
 	async dispatch(event) {
 		let Self = about,

@@ -2,8 +2,8 @@
 // for dark theme
 @import "theme-dark";
 
-
 transition: all 200ms;
+
 
 content {
 	position: absolute;
@@ -260,9 +260,17 @@ content {
 	.defiant-support {
 		.row-body {
 			padding: 23px 30px 25px;
+			line-height: 1.25;
+
+			h3 {
+				font-size: 14px;
+				font-weight: 400;
+				text-transform: uppercase;
+			}
 
 			.panel-left {
-				width: 10px;
+				width: 83px;
+				padding-left: 0;
 
 				.icon {
 					width: 67px;
@@ -332,21 +340,6 @@ content {
 		}
 	}
 
-	// .app-issues {
-	// 	.row-body {
-	// 		padding: 23px 30px 25px;
-
-	// 		.panel-left {
-	// 			width: 10px;
-
-	// 			.icon {
-	// 				width: 67px;
-	// 				height: 67px;
-	// 			}
-	// 		}
-	// 	}
-	// }
-
 	.app-source-code {
 		.row-body {
 			padding: 17px 79px 17px 53px;
@@ -358,7 +351,6 @@ content {
 				padding-left: 5px;
 
 				.icon {
-					opacity: .2;
 					width: 55px;
 					height: 55px;
 				}
@@ -380,6 +372,14 @@ content {
 
 				.link-buttons {
 					padding: 19px 0 3px;
+				}
+
+				.disc-bar {
+					div {
+						&:last-child {
+							flex: 1;
+						}
+					}
 				}
 			}
 		}
@@ -419,10 +419,6 @@ content {
 
 			&:nth-child(1) {
 				border-radius: 3px 0 0 3px;
-			}
-
-			&:last-child {
-				flex: 1;
 			}
 
 			&[style*="width: 0.0"]:nth-child(1) + div,
@@ -478,7 +474,6 @@ content {
 }
 
 @keyframes discSize {
-  0%   { max-width: 0; }
-  100% { max-width: 250px; }
+	0%   { max-width: 0; }
+	100% { max-width: 250px; }
 }
-
