@@ -140,19 +140,19 @@
 			<div class="panel-right">
 				<h2>End User License Agreement</h2>
 				<p>
-					This End-User License Agreement (EULA) is a legal agreement between you (either an individual or a single entity) and Defiant System AB, which includes the computer software and associated media, printed materials, and "online" or electronic documentation ("SOFTWARE PRODUCT") or "Defiant System".
+					This End-User License Agreement (EULA) is a legal agreement between you (either an individual or a single entity) and Defiant System AB, which includes the computer software and associated media, printed materials, and online or electronic documentation (<i>software product</i>) or Defiant System.
 				</p>
 				<p>
-					By utilizing, viewing, or otherwise using the SOFTWARE PRODUCT, you agree to be bound by the terms of this EULA.
+					By utilizing, viewing, or otherwise using the <i>software product</i>, you agree to be bound by the terms of this EULA.
 				</p>
 				<p>
-					If you do not agree to the terms of this EULA, do not use the SOFTWARE PRODUCT.
+					If you do not agree to the terms of this EULA, do not use the <i>software product</i>.
 				</p>
 
 				<h3>Terms of use</h3>
 				<ul>
 					<li>
-						You are allowed to use this software as is, through your personal user account. You are not allowed to share your account with others, unless we explicitly grant you the permission to share it.
+						You are allowed to use this software as is, through your personal user account. You are not allowed to share your account with others, unless we explicitly grant you the permission to share it. 
 						At such time as when your account has been suspended, you must destroy all copies of documentation, associated media, printed materials and copyrighted software source code you might have obtained, either directly or indirectly.
 					</li>
 					<li>
@@ -170,10 +170,21 @@
 
 <xsl:template name="defiant-privacy-policy">
 	<div class="defiant-privacy-policy">
-		<h2>Privacy Policy</h2>
+		<h2>
+			Privacy Policy
+			<span>Last updated: November 30, 2021</span>
+		</h2>
 		<div class="divider over"></div>
-		<div class="license-text"></div>
+		<div class="pp-text"></div>
 		<div class="divider under"></div>
+		<div class="pp-footer">
+			<p>
+				If you have any questions about this Privacy Policy, you can contact us:
+			</p>
+			<p>
+				By email: <a href="mailto:info@defiantsystem.com">info@defiantsystem.com</a>
+			</p>
+		</div>
 	</div>
 </xsl:template>
 

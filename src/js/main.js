@@ -10,10 +10,10 @@ const about = {
 
 		// temp
 		// this.dispatch({ type: "about-defiant" });
-		setTimeout(() => {
-			// window.find(".toolbar-tool_[data-click='app-source-code']").trigger("mousedown").trigger("click");
-			window.find(".toolbar-tool_[data-click='defiant-eula']").trigger("mousedown").trigger("click");
-		}, 500);
+		// setTimeout(() => {
+		// 	// window.find(".toolbar-tool_[data-click='app-source-code']").trigger("mousedown").trigger("click");
+		// 	window.find(".toolbar-tool_[data-click='defiant-privacy-policy']").trigger("mousedown").trigger("click");
+		// }, 500);
 	},
 	async dispatch(event) {
 		let Self = about,
@@ -36,9 +36,15 @@ const about = {
 			case "defiant-eula":
 			case "defiant-privacy-policy":
 				el = window.render({ template, match, target });
-
 				// resize window
 				window.body.css({ height: el.height() });
+
+				if (event.type === "defiant-privacy-policy") {
+					// fetch license, if not already fetched
+					Self.pp = Self.pp || await window.fetch("~/help/privacy-policy.md");
+					let htm = window.marked(Self.pp);
+					el.find(".pp-text").html(htm);
+				}
 
 				return true;
 			// About app

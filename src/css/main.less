@@ -28,6 +28,14 @@ content {
 		&.icon-issue  { background-image: url(~/icons/icon-issue.png); }
 	}
 
+	ul {
+		padding: 3px 5px 5px 19px;
+
+		li {
+			padding: 0 7px 3px 0;
+		}
+	}
+
 	.btn-link {
 		background: #fff;
 		position: relative;
@@ -262,10 +270,21 @@ content {
 			padding: 23px 53px 25px 43px;
 			line-height: 1.25;
 
+			h2 {
+				font-size: 15px;
+				font-weight: 400;
+				color: #222;
+			}
+
 			h3 {
 				font-size: 14px;
 				font-weight: 400;
-				text-transform: uppercase;
+				margin-top: 11px;
+				color: #222;
+			}
+
+			p {
+				padding: 2px 0 3px;
 			}
 
 			.panel-left {
@@ -281,7 +300,20 @@ content {
 	}
 
 	.defiant-privacy-policy {
-		
+		.pp-footer {
+			line-height: 1.5;
+			text-align: center;
+			color: #666;
+
+			a {
+				text-decoration: none;
+				color: #369;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
 	}
 
 	.about-app {
@@ -309,6 +341,7 @@ content {
 			}
 		}
 
+		.pp-text,
 		.license-text {
 			height: 330px;
 			overflow: auto;
