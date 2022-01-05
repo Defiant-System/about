@@ -55,6 +55,7 @@ const about = {
 				// copy value of "ported" from meta
 				xPath = `sys://meta[@name="id"][@value="${Self.app}"]/../meta[@namespace="${Self.ns}"]/../..`;
 				xApp = window.bluePrint.selectSingleNode(xPath);
+
 				if (xApp) {
 					xPath = `sys://Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
 					let sApp = window.bluePrint.selectSingleNode(xPath),
@@ -62,6 +63,14 @@ const about = {
 					if (xPorted && !sApp.getAttribute("ported")) {
 						sApp.setAttribute("ported", xPorted.getAttribute("ported"));
 					}
+
+					["title", "author", "license"].map(name => {
+						let meta = xApp.selectSingleNode(`.//meta[@name="${name}"]`);
+						sApp.setAttribute(name, meta.getAttribute("value"));
+						if (name === "title") {
+							sApp.setAttribute("version", meta.getAttribute("version"));
+						}
+					});
 				}
 
 				// make sure app icons is in ledger

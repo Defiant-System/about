@@ -2,13 +2,13 @@
 	<Head>
 		<meta name="id" value="about"/>
 		<meta name="type" value="system"/>
-		<meta name="title" value="About" version="1.2"/>
+		<meta name="title" value="About" version="1.3"/>
 		<meta name="author" value="Hakan Bilgin" namespace="sys"/>
 		<meta name="license" value="AGPL-3.0-or-later"/>
 		<meta name="repository" value="https://github.com/Defiant-System/about"/>
 		<meta name="width" value="550"/>
 		<meta name="height" value="264"/>
-		<meta name="top" value="150"/>
+		<meta name="top" value="70"/>
 		<meta name="left" value="340"/>
 		<meta name="minimize"/>
 		<meta name="maximize" value="disabled"/>
