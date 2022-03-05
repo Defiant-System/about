@@ -298,7 +298,7 @@
 
 					<div class="btn-link">
 						<i class="icon-issue"></i>
-						<span>4 Issues</span>
+						<span>0 Issues</span>
 						<span>Report issue</span>
 					</div>
 
