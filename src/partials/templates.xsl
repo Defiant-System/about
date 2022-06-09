@@ -182,7 +182,7 @@
 				If you have any questions about this Privacy Policy, you can contact us:
 			</p>
 			<p>
-				By email: <a href="mailto:info@defiantsystem.com">info@defiantsystem.com</a>
+				By email: <a href="mailto:mr.hakan.bilgin@gmail.com">mr.hakan.bilgin@gmail.com</a>
 			</p>
 		</div>
 	</div>

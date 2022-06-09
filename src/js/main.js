@@ -10,10 +10,11 @@ const about = {
 
 		// temp
 		// this.dispatch({ type: "about-defiant" });
-		// setTimeout(() => {
+		setTimeout(() => {
 		// 	// window.find(".toolbar-tool_[data-click='app-source-code']").trigger("mousedown").trigger("click");
-		// 	window.find(".toolbar-tool_[data-click='defiant-privacy-policy']").trigger("mousedown").trigger("click");
-		// }, 500);
+			// window.find(".toolbar-tool_[data-click='defiant-eula']").trigger("mousedown").trigger("click");
+			window.find(".toolbar-tool_[data-click='defiant-privacy-policy']").trigger("mousedown").trigger("click");
+		}, 500);
 	},
 	async dispatch(event) {
 		let Self = about,
@@ -43,7 +44,7 @@ const about = {
 					// fetch license, if not already fetched
 					Self.pp = Self.pp || await window.fetch("~/help/privacy-policy.md");
 					let htm = window.marked(Self.pp);
-					el.find(".pp-text").html(htm);
+					Self.els.content.find(".pp-text").html(htm);
 				}
 
 				return true;
