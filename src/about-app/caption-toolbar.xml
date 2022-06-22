@@ -1,0 +1,10 @@
+<CaptionToolBar>
+	<Group>
+		<Options class="app">
+			<Tool name="Overview" click="about-app" state="active"/>
+			<Tool name="License" click="app-license"/>
+			<!-- <Tool name="Issues" click="app-issues"/> -->
+			<Tool name="Source Code" click="app-source-code"/>
+		</Options>
+	</Group>
+</CaptionToolBar>

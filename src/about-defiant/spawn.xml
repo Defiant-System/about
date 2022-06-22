@@ -1,0 +1,16 @@
+<Spawn id="about-defiant">
+	<Head>
+		<meta name="title" value="About Defiant"/>
+		<meta name="width" value="550"/>
+		<meta name="height" value="264"/>
+		<meta name="top" value="70"/>
+		<meta name="left" value="340"/>
+		<meta name="minimize"/>
+		<meta name="maximize"/>
+		<meta name="resize"/>
+		<meta name="style" value="../css/about-defiant.less"/>
+		<meta name="content" value="content.htm"/>
+
+		@import "caption-toolbar.xml"
+	</Head>
+</Spawn>

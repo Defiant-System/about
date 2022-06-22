@@ -3,62 +3,58 @@
 
 const about = {
 	init() {
-		// fast references
-		this.els = {
-			content:  window.find("content"),
-		};
-
-		// temp
-		// this.dispatch({ type: "about-defiant" });
-		setTimeout(() => {
-		// 	// window.find(".toolbar-tool_[data-click='app-source-code']").trigger("mousedown").trigger("click");
-			// window.find(".toolbar-tool_[data-click='defiant-eula']").trigger("mousedown").trigger("click");
-			window.find(".toolbar-tool_[data-click='defiant-privacy-policy']").trigger("mousedown").trigger("click");
-		}, 500);
+		this.spawns = {};
 	},
 	async dispatch(event) {
 		let Self = about,
-			template = event.type,
-			target = Self.els.content,
-			match = `//*`,
+			spawn,
+			ns, app,
 			xApp,
 			xPath,
-			height,
 			el;
-		
-		//console.log(event);
+		// console.log(event);
 		switch (event.type) {
-			// About Defiant
+			case "window.closed":
+				console.log(event);
+				break;
+			case "show-defiant":
+				spawn = window.open("about-defiant");
+				Self.dispatch({ type: "about-defiant", spawn });
+				break;
 			case "about-defiant":
-				// alter toolbar
-				window.find(".toolbar-group_").addClass("about-defiant");
-				/* falls through */
 			case "defiant-storage":
 			case "defiant-eula":
 			case "defiant-privacy-policy":
-				el = window.render({ template, match, target });
-				// resize window
-				window.body.css({ height: el.height() });
-
+				spawn = event.spawn;
+				el = window.render({
+					template: event.type,
+					match: `//*`,
+					target: spawn.find(".win-body_ content"),
+				});
+				// resize window body
+				spawn.find(".win-body_").css({ height: el.height() });
+				// special handling - markdown content
 				if (event.type === "defiant-privacy-policy") {
 					// fetch license, if not already fetched
 					Self.pp = Self.pp || await window.fetch("~/help/privacy-policy.md");
 					let htm = window.marked(Self.pp);
-					Self.els.content.find(".pp-text").html(htm);
+					spawn.find(".pp-text").html(htm);
 				}
-
 				return true;
-			// About app
+			case "show-app":
+				spawn = window.open("about-app");
+				spawn.data({ nsApp: `${event.ns}:${event.app}` });
+				Self.dispatch({ type: "about-app", spawn });
+				break;
 			case "about-app":
-				Self.ns = Self.ns || event.ns;
-				Self.app = Self.app || event.app;
-
+				spawn = event.spawn;
+				[ns, app] = spawn.data("nsApp").split(":");
 				// copy value of "ported" from meta
-				xPath = `sys://meta[@name="id"][@value="${Self.app}"]/../meta[@namespace="${Self.ns}"]/../..`;
+				xPath = `sys://meta[@name="id"][@value="${app}"]/../meta[@namespace="${ns}"]/../..`;
 				xApp = window.bluePrint.selectSingleNode(xPath);
 
 				if (xApp) {
-					xPath = `sys://Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
+					xPath = `sys://Settings/Apps/i[@ns="${ns}"][@id="${app}"]`;
 					let sApp = window.bluePrint.selectSingleNode(xPath),
 						xPorted = xApp.selectSingleNode(".//meta[@ported]");
 					if (xPorted && !sApp.getAttribute("ported")) {
@@ -73,26 +69,32 @@ const about = {
 						}
 					});
 				}
-
 				// make sure app icons is in ledger
-				await defiant.message({ type: "load-app-icon", ns: Self.ns, id: Self.app });
-
-				let changePath = `//xsl:variable[@name="app"]`,
-					changeSelect = `//Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
+				await defiant.message({ type: "load-app-icon", ns, id: app });
 				// render overview content
-				el = window.render({ template, changePath, changeSelect, target });
-
-				// resize window
-				window.body.css({ height: el.height() });
+				el = window.render({
+					template: "about-app",
+					changePath: `//xsl:variable[@name="app"]`,
+					changeSelect: `//Settings/Apps/i[@ns="${ns}"][@id="${app}"]`,
+					target: spawn.find(".win-body_ content"),
+				});
+				// resize window body
+				spawn.find(".win-body_").css({ height: el.height() });
 
 				return true;
 			case "app-license":
+				spawn = event.spawn;
+				[ns, app] = spawn.data("nsApp").split(":");
+				
 				// render view
-				match = `sys://Settings/Apps/i[@ns="${Self.ns}"][@id="${Self.app}"]`;
-				el = window.render({ template, match, target });
+				el = window.render({
+					template: "app-license",
+					match: `sys://Settings/Apps/i[@ns="${ns}"][@id="${app}"]`,
+					target: spawn.find(".win-body_ content"),
+				});
 
 				// fetch license, if not already fetched
-				Self.License = Self.License || await window.fetch(`/app/${Self.ns}/${Self.app}/LICENSE`);
+				Self.License = Self.License || await window.fetch(`/app/${ns}/${app}/LICENSE`);
 
 				let text = Self.License,
 					name = text.match(/^# .+$/gm)[0],
@@ -107,13 +109,15 @@ const about = {
 				el.find(".license-text").html(htm);
 
 				// resize window
-				window.body.css({ height: el.height() });
-
+				spawn.find(".win-body_").css({ height: el.height() });
+				
 				return true;
 			// case "app-issues":
 			case "app-source-code":
+				spawn = event.spawn;
+				[ns, app] = spawn.data("nsApp").split(":");
 				// copy value of "ported" from meta
-				xPath = `sys://meta[@name="id"][@value="${Self.app}"]/../meta[@namespace="${Self.ns}"]/../..`;
+				xPath = `sys://meta[@name="id"][@value="${app}"]/../meta[@namespace="${ns}"]/../..`;
 				xApp = window.bluePrint.selectSingleNode(xPath);
 
 				// fetch app stats, if not already fetched
@@ -146,10 +150,14 @@ const about = {
 				fGroups.setAttribute("files", stat.length);
 				fGroups.setAttribute("appName", appName);
 				// render contents
-				el = window.render({ template, match, target });
+				el = window.render({
+					match: `//*`,
+					template: "app-source-code",
+					target: spawn.find(".win-body_ content"),
+				});
 				// resize window
-				window.body.css({ height: el.height() });
-
+				spawn.find(".win-body_").css({ height: el.height() });
+				
 				return true;
 			case "show-license":
 				window.find(".toolbar-tool_[data-click='app-license']").trigger("click");

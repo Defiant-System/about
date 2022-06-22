@@ -1,0 +1,10 @@
+<CaptionToolBar>
+	<Group>
+		<Options>
+			<Tool name="Overview" click="about-defiant" state="active"/>
+			<Tool name="Storage" click="defiant-storage"/>
+			<Tool name="EULA" click="defiant-eula"/>
+			<Tool name="Privacy Policy" click="defiant-privacy-policy"/>
+		</Options>
+	</Group>
+</CaptionToolBar>
