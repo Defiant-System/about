@@ -3,7 +3,7 @@
 
 const about = {
 	init() {
-		this.spawns = {};
+		this.spawns = [];
 	},
 	async dispatch(event) {
 		let Self = about,
@@ -15,10 +15,18 @@ const about = {
 		// console.log(event);
 		switch (event.type) {
 			case "window.closed":
-				console.log(event);
+			case "spawn.open":
+				break;
+			case "spawn.close":
+				let index = Self.spawns.indexOf(event.spawn.id);
+				Self.spawns.splice(index, 1);
+				if (!Self.spawns.length) window.close();
 				break;
 			case "show-defiant":
 				spawn = window.open("about-defiant");
+				// save reference to spawn
+				Self.spawns.push(spawn.id);
+
 				Self.dispatch({ type: "about-defiant", spawn });
 				break;
 			case "about-defiant":
@@ -43,12 +51,12 @@ const about = {
 				return true;
 			case "show-app":
 				spawn = window.open("about-app");
-				spawn.data({ nsApp: `${event.ns}:${event.app}` });
+				spawn.el.data({ nsApp: `${event.ns}:${event.app}` });
 				Self.dispatch({ type: "about-app", spawn });
 				break;
 			case "about-app":
 				spawn = event.spawn;
-				[ns, app] = spawn.data("nsApp").split(":");
+				[ns, app] = spawn.el.data("nsApp").split(":");
 				// copy value of "ported" from meta
 				xPath = `sys://meta[@name="id"][@value="${app}"]/../meta[@namespace="${ns}"]/../..`;
 				xApp = window.bluePrint.selectSingleNode(xPath);
@@ -84,7 +92,7 @@ const about = {
 				return true;
 			case "app-license":
 				spawn = event.spawn;
-				[ns, app] = spawn.data("nsApp").split(":");
+				[ns, app] = spawn.el.data("nsApp").split(":");
 				
 				// render view
 				el = window.render({
@@ -115,7 +123,7 @@ const about = {
 			// case "app-issues":
 			case "app-source-code":
 				spawn = event.spawn;
-				[ns, app] = spawn.data("nsApp").split(":");
+				[ns, app] = spawn.el.data("nsApp").split(":");
 				// copy value of "ported" from meta
 				xPath = `sys://meta[@name="id"][@value="${app}"]/../meta[@namespace="${ns}"]/../..`;
 				xApp = window.bluePrint.selectSingleNode(xPath);
