@@ -4,10 +4,13 @@
 const about = {
 	init() {
 		this.spawns = [];
+		// listen to system event
+		defiant.on("sys:window.closed", this.dispatch);
 	},
 	async dispatch(event) {
 		let Self = about,
 			spawn,
+			index,
 			ns, app,
 			xApp,
 			xPath,
@@ -15,10 +18,13 @@ const about = {
 		// console.log(event);
 		switch (event.type) {
 			case "window.closed":
-			case "spawn.open":
+				index = Self.spawns.indexOf(event.detail);
+				Self.spawns.splice(index, 1);
+				if (!Self.spawns.length) window.close();
 				break;
+			// case "spawn.open":
 			case "spawn.close":
-				let index = Self.spawns.indexOf(event.spawn.id);
+				index = Self.spawns.indexOf(event.spawn.id);
 				Self.spawns.splice(index, 1);
 				if (!Self.spawns.length) window.close();
 				break;
@@ -51,6 +57,9 @@ const about = {
 				return true;
 			case "show-app":
 				spawn = window.open("about-app");
+				// save reference to spawn app
+				Self.spawns.push(`${event.ns}:${event.app}`);
+				
 				spawn.el.data({ nsApp: `${event.ns}:${event.app}` });
 				Self.dispatch({ type: "about-app", spawn });
 				break;
