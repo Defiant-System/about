@@ -5,7 +5,7 @@ const about = {
 	init() {
 		this.spawns = [];
 		// listen to system event
-		defiant.on("sys:window.closed", this.dispatch);
+		karaqu.on("sys:window.closed", this.dispatch);
 	},
 	async dispatch(event) {
 		let Self = about,
@@ -28,17 +28,17 @@ const about = {
 				Self.spawns.splice(index, 1);
 				if (!Self.spawns.length) window.close();
 				break;
-			case "show-defiant":
-				spawn = window.open("about-defiant");
+			case "show-karaqu":
+				spawn = window.open("about-karaqu");
 				// save reference to spawn
 				Self.spawns.push(spawn.id);
 
-				Self.dispatch({ type: "about-defiant", spawn });
+				Self.dispatch({ type: "about-karaqu", spawn });
 				break;
-			case "about-defiant":
-			case "defiant-storage":
-			case "defiant-eula":
-			case "defiant-privacy-policy":
+			case "about-karaqu":
+			case "karaqu-storage":
+			case "karaqu-eula":
+			case "karaqu-privacy-policy":
 				spawn = event.spawn;
 				el = window.render({
 					template: event.type,
@@ -48,7 +48,7 @@ const about = {
 				// resize window body
 				spawn.find(".win-body_").css({ height: el.height() });
 				// special handling - markdown content
-				if (event.type === "defiant-privacy-policy") {
+				if (event.type === "karaqu-privacy-policy") {
 					// fetch license, if not already fetched
 					Self.pp = Self.pp || await window.fetch("~/help/privacy-policy.md");
 					let htm = window.marked(Self.pp);
@@ -87,7 +87,7 @@ const about = {
 					});
 				}
 				// make sure app icons is in ledger
-				await defiant.message({ type: "load-app-icon", ns, id: app });
+				await karaqu.message({ type: "load-app-icon", ns, id: app });
 				// render overview content
 				el = window.render({
 					template: "about-app",
@@ -139,7 +139,7 @@ const about = {
 
 				// fetch app stats, if not already fetched
 				let appName = xApp.selectSingleNode(`.//meta[@name="title"]`).getAttribute("value"),
-					stat = await defiant.message({ type: "get-app-stat", ns: Self.ns, id: Self.app }),
+					stat = await karaqu.message({ type: "get-app-stat", ns: Self.ns, id: Self.app }),
 					total = stat.map(x => +x.size).reduce((a, b) => a + b, 0),
 					fGroups = window.bluePrint.selectSingleNode(`//FileGroups`),
 					other = 100;

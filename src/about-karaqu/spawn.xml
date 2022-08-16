@@ -1,6 +1,6 @@
-<Spawn id="about-defiant">
+<Spawn id="about-karaqu">
 	<Head>
-		<meta name="title" value="About Defiant"/>
+		<meta name="title" value="About Karaqu"/>
 		<meta name="width" value="550"/>
 		<meta name="height" value="264"/>
 		<meta name="top" value="70"/>
@@ -8,7 +8,7 @@
 		<meta name="minimize"/>
 		<meta name="maximize" value="disabled"/>
 		<meta name="resize" value="disabled"/>
-		<meta name="style" value="../css/about-defiant.less"/>
+		<meta name="style" value="../css/about-karaqu.less"/>
 		<meta name="content" value="content.htm"/>
 
 		@import "caption-toolbar.xml"

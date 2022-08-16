@@ -31,7 +31,7 @@ For the purposes of this Privacy Policy:
 
 Service or from the Service infrastructure itself (for example, the duration of a page visit).
 
-**Website** refers to Defiant System, accessible from https://def-ant.com
+**Website** refers to Karaqu, accessible from https://www.karaqu.com
 
 You means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
 

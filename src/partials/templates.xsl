@@ -7,8 +7,8 @@
 </xsl:template>
 
 
-<xsl:template name="about-defiant">
-	<div class="about-defiant">
+<xsl:template name="about-karaqu">
+	<div class="about-karaqu">
 		<div class="row-body">
 			<div class="panel-left">
 				<i class="icon" style="background-image: url(/res/img/def-logo.webp);"></i>
@@ -45,7 +45,7 @@
 </xsl:template>
 
 
-<xsl:template name="defiant-storage">
+<xsl:template name="karaqu-storage">
 	<xsl:variable name="baseDir" select="//FileSystem"></xsl:variable>
 	<xsl:variable name="used" select="sum($baseDir//i/@size)"></xsl:variable>
 	<xsl:variable name="quota">
@@ -61,12 +61,12 @@
 
 	<div class="cloud-storages">
 		<div class="storage">
-			<xsl:call-template name="defiant-storage-item">
+			<xsl:call-template name="karaqu-storage-item">
 				<xsl:with-param name="baseDir" select="//FileSystem"/>
 			</xsl:call-template>
 			
 			<xsl:for-each select="//Settings/Registry/*[@id='fs-cloud-storage']/*">
-				<xsl:call-template name="defiant-storage-item">
+				<xsl:call-template name="karaqu-storage-item">
 					<xsl:with-param name="baseDir" select="//*[@name='Mount']/*[@name=current()/@name]"/>
 				</xsl:call-template>
 			</xsl:for-each>
@@ -76,7 +76,7 @@
 </xsl:template>
 
 
-<xsl:template name="defiant-storage-item">
+<xsl:template name="karaqu-storage-item">
 	<xsl:param name="baseDir" select="//FileSystem"/>
 	<xsl:variable name="exclude" select="$baseDir/*[@name != 'Mount']"/>
 	<xsl:variable name="used" select="sum($exclude//i/@size)"></xsl:variable>
@@ -93,13 +93,13 @@
 	<xsl:variable name="name">
 		<xsl:choose>
 			<xsl:when test="@name"><xsl:value-of select="@name" /></xsl:when>
-			<xsl:otherwise>Defiant Cloud Storage</xsl:otherwise>
+			<xsl:otherwise>Karaqu Cloud Storage</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
 	<xsl:variable name="icon">
 		<xsl:choose>
 			<xsl:when test="@icon">icon-<xsl:value-of select="@icon" /></xsl:when>
-			<xsl:otherwise>defiant-cloud-storage</xsl:otherwise>
+			<xsl:otherwise>karaqu-cloud-storage</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
 
@@ -131,16 +131,16 @@
 </xsl:template>
 
 
-<xsl:template name="defiant-eula">
-	<div class="defiant-eula">
+<xsl:template name="karaqu-eula">
+	<div class="karaqu-eula">
 		<div class="row-body">
 			<div class="panel-left">
-				<i class="icon" style="background-image: url(~/icons/defiant-logo.png);"></i>
+				<i class="icon" style="background-image: url(~/icons/karaqu-logo.png);"></i>
 			</div>
 			<div class="panel-right">
 				<h2>End User License Agreement</h2>
 				<p>
-					This End-User License Agreement (EULA) is a legal agreement between you (either an individual or a single entity) and Defiant System AB, which includes the computer software and associated media, printed materials, and online or electronic documentation (<i>software product</i>) or Defiant System.
+					This End-User License Agreement (EULA) is a legal agreement between you (either an individual or a single entity) and Defiant System AB, which includes the computer software and associated media, printed materials, and online or electronic documentation (<i>software product</i>) or Karaqu.
 				</p>
 				<p>
 					By utilizing, viewing, or otherwise using the <i>software product</i>, you agree to be bound by the terms of this EULA.
@@ -156,7 +156,7 @@
 						At such time as when your account has been suspended, you must destroy all copies of documentation, associated media, printed materials and copyrighted software source code you might have obtained, either directly or indirectly.
 					</li>
 					<li>
-						You are not allowed to copy any documentation, associated media, printed materials or software source code related to Defiant System.
+						You are not allowed to copy any documentation, associated media, printed materials or software source code related to Karaqu.
 					</li>
 					<li>
 						You understand that this is beta quality software. Therefore, we can not be held accountable for any bugs or errors in the source code leading to either loss of data or malfunctioning features.
@@ -168,8 +168,8 @@
 </xsl:template>
 
 
-<xsl:template name="defiant-privacy-policy">
-	<div class="defiant-privacy-policy">
+<xsl:template name="karaqu-privacy-policy">
+	<div class="karaqu-privacy-policy">
 		<h2>
 			Privacy Policy
 			<span>Last updated: November 30, 2021</span>
@@ -285,10 +285,10 @@
 				<p>
 					The source code of <b><xsl:value-of select="//FileGroups/@appName" /></b> 
 					is available at Github. You can edit and continue its development locally on your 
-					computer by using the Defiant Command Line Interface. To install <b>defiant-cli</b>, 
+					computer by using the Karaqu Command Line Interface. To install <b>karaqu-cli</b>, 
 					assuming you already installed NodeJS - enter following command in terminal shell;<br/>
 				</p>
-				<code>npm install defiant-cli -g</code>
+				<code>npm install karaqu-cli -g</code>
 				
 				<div class="link-buttons">
 					<div class="btn-link">
