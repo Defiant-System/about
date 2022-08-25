@@ -9,8 +9,8 @@
 		<meta name="script" value="src/js/main.js"/>
 		<meta name="icons" value="src/svg/icons.svg"/>
 		<meta name="xsl" value="src/partials/templates.xsl"/>
-		<meta name="spawn" value="src/about-defiant/spawn.xml"/>
-		<meta name="spawn" value="src/about-app/spawn.xml"/>
+		<meta name="spawn" value="src/spawn-karaqu/spawn.xml"/>
+		<meta name="spawn" value="src/spawn-app/spawn.xml"/>
 
 		@import "src/partials/menubar.xml"
 	</Head>
