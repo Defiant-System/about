@@ -25,8 +25,10 @@
 
 			// toolbar events
 			case "show-app":
-				// tab window element with info
-				Spawn.el.data({ nsApp: `${event.ns}:${event.app}` });
+				if (!Spawn.el.data("nsApp")) {
+					// tab window element with info
+					Spawn.el.data({ nsApp: `${event.ns}:${event.app}` });
+				}
 				[ns, app] = Spawn.el.data("nsApp").split(":");
 
 				// copy value of "ported" from meta
@@ -34,7 +36,20 @@
 				xApp = window.bluePrint.selectSingleNode(xPath);
 
 				if (xApp) {
-					console.log("TODO!");
+					xPath = `sys://Settings/Apps/i[@ns="${ns}"][@id="${app}"]`;
+					let sApp = window.bluePrint.selectSingleNode(xPath),
+						xPorted = xApp.selectSingleNode(".//meta[@ported]");
+					if (xPorted && !sApp.getAttribute("ported")) {
+						sApp.setAttribute("ported", xPorted.getAttribute("ported"));
+					}
+
+					["title", "author", "license"].map(name => {
+						let meta = xApp.selectSingleNode(`.//meta[@name="${name}"]`);
+						sApp.setAttribute(name, meta.getAttribute("value"));
+						if (name === "title") {
+							sApp.setAttribute("version", meta.getAttribute("version"));
+						}
+					});
 				}
 
 				karaqu.message({ type: "load-app-icon", ns, id: app })
