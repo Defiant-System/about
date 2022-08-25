@@ -7,7 +7,7 @@
 	},
 	dispatch(event) {
 		let Self = about.karaqu,
-			spawn = event.spawn,
+			Spawn = event.spawn,
 			el;
 		// console.log(event);
 		switch (event.type) {
@@ -27,10 +27,10 @@
 				el = window.render({
 					match: `//*`,
 					template: event.type,
-					target: spawn.find(".win-body_ content"),
+					target: Spawn.find(".win-body_ content"),
 				});
 				// resize window body
-				spawn.find(".win-body_").css({ height: el.height() });
+				Spawn.find(".win-body_").css({ height: el.height() });
 				// special handling - markdown content
 				if (event.type === "karaqu-privacy-policy") {
 					if (!Self.pp) {
@@ -38,13 +38,13 @@
 						window.fetch("~/help/privacy-policy.md")
 							.then(md => {
 								let htm = window.marked(md);
-								spawn.find(".pp-text").html(htm);
+								Spawn.find(".pp-text").html(htm);
 								// store for later
 								Self.pp = md;
 							});
 					} else {
 						let htm = window.marked(Self.pp);
-						spawn.find(".pp-text").html(htm);
+						Spawn.find(".pp-text").html(htm);
 					}
 				}
 				return true;

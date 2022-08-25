@@ -7,9 +7,11 @@
 	},
 	dispatch(event) {
 		let Self = about.karaqu,
-			spawn = event.spawn,
+			Spawn = event.spawn,
+			ns, app,
 			xApp,
 			xPath,
+			func,
 			el;
 		// console.log(event);
 		switch (event.type) {
@@ -23,29 +25,83 @@
 
 			// toolbar events
 			case "show-app":
+				// tab window element with info
+				Spawn.el.data({ nsApp: `${event.ns}:${event.app}` });
+				[ns, app] = Spawn.el.data("nsApp").split(":");
+
 				// copy value of "ported" from meta
-				xPath = `sys://meta[@name="id"][@value="${event.app}"]/../meta[@namespace="${event.ns}"]/../..`;
+				xPath = `sys://meta[@name="id"][@value="${app}"]/../meta[@namespace="${ns}"]/../..`;
 				xApp = window.bluePrint.selectSingleNode(xPath);
 
-				karaqu.message({ type: "load-app-icon", ns: event.ns, id: event.app })
+				if (xApp) {
+					console.log("TODO!");
+				}
+
+				karaqu.message({ type: "load-app-icon", ns, id: app })
 					.then(res => {
 						// render overview content
 						el = window.render({
 							template: "about-app",
 							changePath: `//xsl:variable[@name="app"]`,
-							changeSelect: `//Settings/Apps/i[@ns="${event.ns}"][@id="${event.app}"]`,
-							target: spawn.find(".win-body_ content"),
+							changeSelect: `//Settings/Apps/i[@ns="${ns}"][@id="${app}"]`,
+							target: Spawn.find(".win-body_ content"),
 						});
 						// resize window body
-						spawn.find(".win-body_").css({ height: el.height() });
+						Spawn.find(".win-body_").css({ height: el.height() });
 					});
 				return true;
 			case "app-license":
-				return true;
-			case "app-issues":
+				// get app details
+				[ns, app] = Spawn.el.data("nsApp").split(":");
+				
+				// render view
+				el = window.render({
+					template: "app-license",
+					match: `sys://Settings/Apps/i[@ns="${ns}"][@id="${app}"]`,
+					target: Spawn.find(".win-body_ content"),
+				});
+				// put license content into DOM
+				func = () => {
+					let text = Self.license,
+						name = text.match(/^# .+$/gm)[0],
+						version = text.match(/^version .+$/gmi)[0];
+					// update header
+					el.find("h2").html(`${name.slice(2)}<span>${version}</span>`);
+					// clear header from 
+					text = text.replace(name, "");
+					text = text.replace(version, "");
+
+					let htm = window.marked(text);
+					el.find(".license-text").html(htm);
+
+					// resize window
+					Spawn.find(".win-body_").css({ height: el.height() });
+				};
+
+				if (Self.license) func();
+				else {
+					window.fetch(`/app/${ns}/${app}/LICENSE`)
+						.then(res => {
+							// remember for later
+							Self.license = res;
+							// put license into view
+							func();
+						});
+				}
 				return true;
 			case "app-source-code":
+				// get app details
+				[ns, app] = Spawn.el.data("nsApp").split(":");
+				// copy value of "ported" from meta
+				xPath = `sys://meta[@name="id"][@value="${app}"]/../meta[@namespace="${ns}"]/../..`;
+				xApp = window.bluePrint.selectSingleNode(xPath);
+
+				console.log( xApp );
+
 				return true;
+			case "show-license":
+				Spawn.find(".toolbar-tool_[data-click='app-license']").trigger("click");
+				break;
 		}
 	}
 }
