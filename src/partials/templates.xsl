@@ -275,6 +275,7 @@
 
 
 <xsl:template name="app-source-code">
+	<xsl:variable name="app" />
 	<div class="app-source-code">
 		<div class="row-body">
 			<div class="panel-left">
@@ -284,7 +285,14 @@
 				<h3>Repository</h3>
 				<p>
 					The source code of <b><xsl:value-of select="//FileGroups/@appName" /></b> 
-					is available at Github. You can edit and continue its development locally on your 
+					is available at Github.<br/>
+					<a target="_new">
+						<xsl:attribute name="href"><xsl:value-of select="$app//meta[@name='repository']/@value" /></xsl:attribute>
+						<xsl:value-of select="$app//meta[@name='repository']/@value" />
+					</a>
+					
+					<br/><br/>
+					You can edit and continue its development locally on your 
 					computer by using the Karaqu Command Line Interface. To install <b>karaqu-cli</b>, 
 					assuming you already installed NodeJS - enter following command in terminal shell;<br/>
 				</p>
@@ -293,18 +301,18 @@
 				<div class="link-buttons">
 					<div class="btn-link">
 						<i class="icon-code"></i>
-						<span>Code</span>
+						<span data-click="open-github" data-arg="code">Code</span>
 					</div>
 
 					<div class="btn-link">
 						<i class="icon-issue"></i>
-						<span>0 Issues</span>
-						<span>Report issue</span>
+						<span data-click="open-github" data-arg="issue">0 Issues</span>
+						<span data-click="open-github" data-arg="issue">Report issue</span>
 					</div>
 
 					<div class="btn-link">
 						<i class="icon-star"></i>
-						<span>0 Stars</span>
+						<span data-click="open-github" data-arg="code">0 Stars</span>
 					</div>
 				</div>
 

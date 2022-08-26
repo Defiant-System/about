@@ -21,6 +21,10 @@ const about = {
 				// spawn = window.open("spawn-karaqu");
 				// Self.spawn.dispatch({ ...event, type: "spawn.init", spawn });
 				break;
+			case "show-app":
+				spawn = window.open("spawn-app");
+				Self.dispatch({ ...event, spawn });
+				break;
 		}
 	},
 	karaqu: @import "./modules/karaqu.js",

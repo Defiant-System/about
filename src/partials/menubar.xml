@@ -1,5 +1,0 @@
-<MenuBar>
-	<Menu name="About">
-		<Menu name="Quit About" shell="win -c"/>
-	</Menu>
-</MenuBar>

@@ -18,6 +18,9 @@
 			// system events
 			case "spawn.open":
 				Self.dispatch({ ...event, type: "show-app" });
+
+				// temp
+				// setTimeout(() => Spawn.find(`.toolbar-tool_[data-click="app-source-code"]`).trigger("click"), 300);
 				break;
 			case "spawn.focus":
 			case "spawn.blur":
@@ -111,7 +114,46 @@
 				xPath = `sys://meta[@name="id"][@value="${app}"]/../meta[@namespace="${ns}"]/../..`;
 				xApp = window.bluePrint.selectSingleNode(xPath);
 
-				console.log( xApp );
+				// fetch app stats, if not already fetched
+				karaqu.message({ type: "get-app-stat", ns: ns, id: app })
+					.then(stat => {
+						let appName = xApp.selectSingleNode(`.//meta[@name="title"]`).getAttribute("value"),
+							total = stat.map(x => +x.size).reduce((a, b) => a + b, 0),
+							fGroups = window.bluePrint.selectSingleNode(`//FileGroups`),
+							other = 100;
+
+						// add script
+						stat.push({ name: "main.js", kind: "js", size: xApp.selectSingleNode(`./script`).textContent.length });
+						// add style
+						stat.push({ name: "main.css", kind: "css", size: xApp.selectSingleNode(`./style`).textContent.length });
+						
+						// calculate file group sizes
+						fGroups.selectNodes(`./i`).map(xGroup => {
+							let gTotal = 0;
+							xGroup.selectNodes(`./i[@kind]`).map(x => {
+								gTotal += stat.filter(f => f.kind === x.getAttribute("kind"))
+												.map(x => +x.size).reduce((a, b) => a + b, 0);
+							});
+							if (xGroup.getAttribute("name") !== "Other") {
+								gTotal = Math.round(gTotal/total * 100);
+								other -= gTotal;
+								xGroup.setAttribute("width", gTotal);
+							}
+						});
+						// contents data
+						fGroups.setAttribute("total", total);
+						fGroups.setAttribute("files", stat.length);
+						fGroups.setAttribute("appName", appName);
+						// render contents
+						el = window.render({
+							template: "app-source-code",
+							changePath: `//xsl:variable[@name="app"]`,
+							changeSelect: `//applications/Application/*/meta[@name="id"][@value="${app}"]/../..`,
+							target: Spawn.find(".win-body_ content"),
+						});
+						// resize window
+						Spawn.find(".win-body_").css({ height: el.height() });
+				});
 
 				return true;
 			case "show-license":
