@@ -3,7 +3,8 @@
 
 const about = {
 	init() {
-		
+		// listen to system event
+		karaqu.on("sys:window.closed", this.dispatch);
 	},
 	async dispatch(event) {
 		let Self = about,
@@ -17,9 +18,13 @@ const about = {
 		// console.log(event);
 		switch (event.type) {
 			// system events
+			case "window.closed":
+				console.log( event );
+				break;
+			case "about-karaqu":
 			case "window.init":
-				// spawn = window.open("spawn-karaqu");
-				// Self.spawn.dispatch({ ...event, type: "spawn.init", spawn });
+				spawn = window.open("spawn-karaqu");
+				Self.karaqu.dispatch({ ...event, type: "spawn.init", spawn });
 				break;
 			case "show-app":
 				spawn = window.open("spawn-app");
