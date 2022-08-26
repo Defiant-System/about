@@ -3,6 +3,7 @@
 
 const about = {
 	init() {
+		this.spawns = {};
 		// listen to system event
 		karaqu.on("sys:window.closed", this.dispatch);
 	},
@@ -19,7 +20,9 @@ const about = {
 		switch (event.type) {
 			// system events
 			case "window.closed":
-				console.log( event );
+				if (Self.spawns[event.detail]) {
+					Self.spawns[event.detail].close();
+				}
 				break;
 			case "about-karaqu":
 			case "window.init":
@@ -28,6 +31,8 @@ const about = {
 				break;
 			case "show-app":
 				spawn = window.open("spawn-app");
+				// save reference to app for close event
+				Self.spawns[`${event.ns}:${event.app}`] = spawn;
 				Self.dispatch({ ...event, spawn });
 				break;
 		}
