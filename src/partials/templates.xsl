@@ -299,6 +299,7 @@
 				<code>npm install karaqu-cli -g</code>
 				
 				<div class="link-buttons">
+					<xsl:attribute name="data-link"><xsl:value-of select="$app//meta[@name='repository']/@value" /></xsl:attribute>
 					<div class="btn-link">
 						<i class="icon-code"></i>
 						<span data-click="open-github" data-arg="code">Code</span>

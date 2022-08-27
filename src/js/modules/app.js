@@ -159,6 +159,16 @@
 			case "show-license":
 				Spawn.find(".toolbar-tool_[data-click='app-license']").trigger("click");
 				break;
+			case "open-github":
+				switch (event.arg) {
+					case "code":
+					case "issue":
+					case "stars":
+						let link = event.el.parents(".link-buttons");
+						window.open(link.attr("data-link"));
+						break;
+				}
+				break;
 		}
 	}
 }
