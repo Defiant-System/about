@@ -1,6 +1,6 @@
 <CaptionToolBar>
 	<Group>
-		<Options class="app">
+		<Options>
 			<Tool name="Overview" click="show-app" state="active"/>
 			<Tool name="License" click="app-license"/>
 			<Tool name="Source Code" click="app-source-code"/>
