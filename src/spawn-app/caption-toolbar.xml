@@ -1,5 +1,5 @@
 <CaptionToolBar>
-	<Group>
+	<Group center="1">
 		<Options>
 			<Tool name="Overview" click="show-app" state="active"/>
 			<Tool name="License" click="app-license"/>

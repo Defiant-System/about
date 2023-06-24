@@ -1,5 +1,5 @@
 <CaptionToolBar>
-	<Group>
+	<Group center="1">
 		<Options>
 			<Tool name="Overview" click="about-karaqu" state="active"/>
 			<Tool name="Storage" click="karaqu-storage"/>
