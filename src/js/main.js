@@ -1,5 +1,7 @@
 
 @import "./modules/marked.min.js";
+@import "./modules/test.js";
+
 
 const about = {
 	init() {

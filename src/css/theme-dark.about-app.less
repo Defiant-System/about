@@ -6,10 +6,41 @@
 		a {
 			color: #0ef;
 		}
-		
+
+		code {
+			background: rgba(0,0,0,.075);
+		}
+
+		.btn-link {
+			background: #888;
+			border-color: #333;
+		}
+
+		.disc-bar {
+			background: rgba(0,0,0,.15);
+			box-shadow: 0 0 0 1px rgba(0,0,0,.5),
+						0 2px 0 rgba(255,255,255,.2);
+
+			&:after {
+				box-shadow: inset 0 -13px 7px rgba(0,0,0,.1),
+							inset 1px 0px 1px rgba(255,255,255,.2);
+			}
+
+			div {
+				span {
+					background: rgba(200,200,200,.9);
+					color: #222;
+					text-shadow: 0 0 0;
+
+					&:before {
+						border-top-color: rgba(200,200,200,.9);
+					}
+				}
+			}
+		}
+
 		.row-body {
 			.panel-right {
-
 				h1 {
 					color: var( --content-fg );
 					filter: brightness(1.15);
@@ -45,51 +76,7 @@
 			}
 		}
 
-		.cloud-storages {
-			.row-body {
-				.panel-right {
-					.disc-bar {
-						background: rgba(0,0,0,.15);
-						box-shadow: 0 0 0 1px rgba(0,0,0,.5),
-									0 2px 0 rgba(255,255,255,.2);
-
-						&:after {
-							box-shadow: inset 0 -13px 7px rgba(0,0,0,.1),
-										inset 1px 0px 1px rgba(255,255,255,.2);
-						}
-
-						div {
-							span {
-								background: rgba(200,200,200,.9);
-								color: #222;
-								text-shadow: 0 0 0;
-
-								&:before {
-									border-top-color: rgba(200,200,200,.9);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
-		.karaqu-eula {
-			.row-body {
-				.panel-left {
-					.icon {
-						filter: brightness(0.5) contrast(1.5);
-					}
-				}
-
-				h2,
-				h3 {
-					color: var( --content-fg );
-				}
-			}
-		}
-
-		.karaqu-privacy-policy {
+		.app-license {
 			h2 {
 				color: var( --content-fg );
 
@@ -109,6 +96,16 @@
 				a {
 					color: #0ef;
 					text-shadow: 0 1px 0 rgba(0,0,0,.65);
+				}
+			}
+		}
+
+		.app-source-code {
+			.row-body {
+				.panel-left {
+					.icon {
+						filter: brightness(.5) contrast(1.5);
+					}
 				}
 			}
 		}

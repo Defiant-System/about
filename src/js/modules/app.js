@@ -6,7 +6,8 @@
 
 	},
 	dispatch(event) {
-		let Self = about.karaqu,
+		let APP = about,
+			Self = APP.karaqu,
 			Spawn = event.spawn,
 			ns, app,
 			xApp,
@@ -19,8 +20,9 @@
 			case "spawn.open":
 				Self.dispatch({ ...event, type: "show-app" });
 
-				// temp
-				// setTimeout(() => Spawn.find(`.toolbar-tool_[data-click="app-source-code"]`).trigger("click"), 300);
+				// DEV-ONLY-START
+				Test.init(APP, Spawn);
+				// DEV-ONLY-END
 				break;
 			case "spawn.focus":
 			case "spawn.blur":

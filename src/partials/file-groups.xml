@@ -1,10 +1,5 @@
 
 <FileGroups>
-	<i name="Media" color="#7676fe">
-		<i kind="mov"/>
-		<i kind="mp3"/>
-		<i kind="mid"/>
-	</i>
 	<i name="Style" color="#24d3ff">
 		<i kind="css"/>
 		<i kind="less"/>
@@ -13,11 +8,17 @@
 	<i name="Script" color="#ffde24">
 		<i kind="js"/>
 	</i>
-	<i name="HTML" color="#e97474">
-		<i kind="xml"/>
-		<i kind="xsl"/>
-		<i kind="htm"/>
-		<i kind="html"/>
+	<i name="Media" color="#7676fe">
+		<i kind="mov"/>
+		<i kind="mp3"/>
+		<i kind="mid"/>
+	</i>
+	<i name="Other" color="#69a5e1">
+		<i kind="LICENSE"/>
+		<i kind="txt"/>
+		<i kind="md"/>
+		<i kind="woff2"/>
+		<i kind="woff"/>
 	</i>
 	<i name="Image" color="#ff9800">
 		<i kind="png"/>
@@ -27,11 +28,10 @@
 		<i kind="svg"/>
 		<i kind="webp"/>
 	</i>
-	<i name="Other" color="#69a5e1">
-		<i kind="LICENSE"/>
-		<i kind="txt"/>
-		<i kind="md"/>
-		<i kind="woff2"/>
-		<i kind="woff"/>
+	<i name="HTML" color="#e97474">
+		<i kind="xml"/>
+		<i kind="xsl"/>
+		<i kind="htm"/>
+		<i kind="html"/>
 	</i>
 </FileGroups>

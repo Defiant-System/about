@@ -1,4 +1,6 @@
 
+@import "theme-dark.about-app";
+
 transition: all 200ms;
 
 
@@ -309,8 +311,9 @@ content {
 				code {
 					display: inline-block;
 					margin-top: 5px;
-					padding: 2px 5px;
+					padding: 2px 7px;
 					border: 1px solid rgba(0,0,0,.15);
+					border-radius: 3px;
 				}
 
 				.link-buttons {
@@ -360,15 +363,14 @@ content {
 			max-width: 0;
 			animation: discSize 300ms 200ms linear forwards;
 
-			&:nth-child(1) {
-				border-radius: 3px 0 0 3px;
-			}
+			&:first-child { border-radius: 3px 0 0 3px }
+			&:last-child { border-radius: 0 3px 3px 0 }
 
-			&[style*="width: 0.0"]:nth-child(1) + div,
-			&[style^="width: 0.0"]:nth-child(1) + div {
-				border-radius: 3px 0 0 3px;
-			}
-						
+			// &[style*="width: 0.0"]:nth-child(1) + div,
+			// &[style^="width: 0.0"]:nth-child(1) + div {
+			// 	border-radius: 3px 0 0 3px;
+			// }
+					
 			&:hover span {
 				visibility: visible;
 				animation: pop 130ms linear forwards;
