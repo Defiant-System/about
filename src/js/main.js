@@ -30,6 +30,10 @@ const about = {
 			case "window.init":
 				spawn = window.open("spawn-karaqu");
 				Self.karaqu.dispatch({ ...event, type: "spawn.init", spawn });
+				
+				// DEV-ONLY-START
+				Test.init(Self, spawn);
+				// DEV-ONLY-END
 				break;
 			case "show-app":
 				spawn = window.open("spawn-app");

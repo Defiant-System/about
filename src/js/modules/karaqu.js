@@ -15,10 +15,6 @@
 			// system events
 			case "spawn.open":
 				Self.dispatch({ ...event, type: "about-karaqu" });
-				
-				// DEV-ONLY-START
-				Test.init(APP, Spawn);
-				// DEV-ONLY-END
 				break;
 			case "spawn.focus":
 			case "spawn.blur":
