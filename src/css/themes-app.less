@@ -1,0 +1,190 @@
+
+[data-ui="royale-beige"] {
+	.win-caption-toolbar_ {
+		padding-top: 0;
+		height: 0;
+		border: 0;
+		top: -25px;
+
+		.toolbar-tool_:first-child,
+		.toolbar-tool_:last-child,
+		.toolbar-tool_ {
+			padding-top: 3px;
+			height: 21px;
+			color: #eef;
+			text-shadow: 0 1px 0 rgba(0,0,0,.35);
+			border-color: rgba(#336,.5);
+			border-bottom-color: rgba(#336,.75);
+			background: linear-gradient(180deg, #83c2ed 0px, #5593de 50%, #3980d2 50%, #2c55b1 100%);
+			
+			&:before {
+				background-color: rgba(17,17,85,.35);
+			}
+
+			&:active:not(.tool-disabled_),
+			&.tool-active_:not(.tool-disabled_) {
+				background: rgba(17,17,85,.5);
+				color: #eee;
+				text-shadow: 0 1px 0 rgba(0,0,0,.35);
+				box-shadow: 0 1px 0 rgba(255,255,255,0.15);
+				padding-top: 4px;
+			}
+		}
+	}
+
+	.win-body_ {
+		border-radius: 4px;
+	}
+}
+
+[data-ui="royale-amber"] {
+	.win-caption-toolbar_ {
+		padding-top: 0;
+		height: 0;
+		border: 0;
+		top: -25px;
+
+		.toolbar-tool_:first-child,
+		.toolbar-tool_:last-child,
+		.toolbar-tool_ {
+			padding-top: 3px;
+			height: 21px;
+			background: radial-gradient(ellipse at bottom center, #ffa90032, transparent 90%),
+						linear-gradient(180deg, #7b6b56 0px, #594f42 8px, #332a1c 9px, #3b2c1c 100%);
+
+			&:not(.tool-active_):not(.tool-disabled_):hover {
+				background: radial-gradient(ellipse at bottom center, #ffa90052, transparent 90%),
+							linear-gradient(180deg, #7b6b56 0px, #594f42 8px, #332a1c 9px, #3b2c1c 100%);
+			}
+		}
+	}
+
+	.win-body_[data-theme="dark"] {
+		content {
+			.app-source-code {
+				.row-body {
+					.panel-left {
+						.icon {
+							filter: brightness(.45) sepia(1) hue-rotate(355deg) contrast(1.5);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+[data-ui="royale-black"] {
+	.win-caption-toolbar_ {
+		padding-top: 0;
+		height: 0;
+		border: 0;
+		top: -25px;
+
+		.toolbar-tool_:first-child,
+		.toolbar-tool_:last-child,
+		.toolbar-tool_ {
+			padding-top: 3px;
+			height: 21px;
+			background: radial-gradient(ellipse at bottom center, #979aff22, transparent 90%),
+						linear-gradient(180deg, #60567b 0px, #464259 8px, #302c43 9px, #2d2c4b 100%);
+
+			&:not(.tool-active_):not(.tool-disabled_):hover {
+				background: radial-gradient(ellipse at bottom center, #979aff44, transparent 90%),
+							linear-gradient(180deg, #60567b 0px, #464259 8px, #302c43 9px, #2d2c4b 100%);
+			}
+		}
+	}
+
+	.win-body_[data-theme="dark"] {
+		content {
+			.app-source-code {
+				.row-body {
+					.panel-left {
+						.icon {
+							filter: brightness(.5) sepia(1) hue-rotate(185deg) saturate(1.25) contrast(1.25);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+[data-ui="royale-emerald"] {
+	.win-caption-toolbar_ {
+		padding-top: 0;
+		height: 0;
+		border: 0;
+		top: -25px;
+
+		.toolbar-tool_:first-child,
+		.toolbar-tool_:last-child,
+		.toolbar-tool_ {
+			padding-top: 3px;
+			height: 21px;
+			border-color: rgba(#121,.5);
+			border-bottom-color: rgba(#121,.75);
+			background: radial-gradient(ellipse at bottom center, #5fff6c2f, transparent 90%),
+						linear-gradient(180deg, #4b6f4a 0px, #324d36 50%, #193a1a 50%, #152f1a 100%);
+
+			&:not(.tool-active_):not(.tool-disabled_):hover {
+				background: radial-gradient(ellipse at bottom center, #5fff6c4f, transparent 90%),
+							linear-gradient(180deg, #4b6f4a 0px, #324d36 50%, #193a1a 50%, #152f1a 100%);
+			}
+		}
+	}
+
+	.win-body_[data-theme="dark"] {
+		content {
+			.app-source-code {
+				.row-body {
+					.panel-left {
+						.icon {
+							filter: brightness(.45) sepia(1) hue-rotate(75deg) contrast(1.5);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+[data-ui="royale-purple"] {
+	.win-caption-toolbar_ {
+		padding-top: 0;
+		height: 0;
+		border: 0;
+		top: -25px;
+
+		.toolbar-tool_:first-child,
+		.toolbar-tool_:last-child,
+		.toolbar-tool_ {
+			padding-top: 3px;
+			height: 21px;
+			border-color: rgba(#112,.5);
+			border-bottom-color: rgba(#112,.75);
+			background: radial-gradient(ellipse at bottom center, #f697ff2f, transparent 90%),
+						linear-gradient(180deg, #72567b 0px, #514259 8px, #46294c 9px, #412953 100%);
+
+			&:not(.tool-active_):not(.tool-disabled_):hover {
+				background: radial-gradient(ellipse at bottom center, #f697ff4f, transparent 90%),
+							linear-gradient(180deg, #72567b 0px, #514259 8px, #46294c 9px, #412953 100%);
+			}
+		}
+	}
+
+	.win-body_[data-theme="dark"] {
+		content {
+			.app-source-code {
+				.row-body {
+					.panel-left {
+						.icon {
+							filter: brightness(.45) sepia(1) hue-rotate(245deg) contrast(1.5);
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -2,6 +2,7 @@
 let Test = {
 	init(APP, spawn) {
 		
+		setTimeout(() => spawn.find(`.toolbar-tool_[data-click="karaqu-eula"]`).trigger("click"), 300);
 		// setTimeout(() => spawn.find(`.toolbar-tool_[data-click="app-source-code"]`).trigger("click"), 300);
 				
 		return;
