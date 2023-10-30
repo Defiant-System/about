@@ -70,7 +70,6 @@
 					<xsl:with-param name="baseDir" select="//*[@name='Mount']/*[@name=current()/@name]"/>
 				</xsl:call-template>
 			</xsl:for-each>
-			
 		</div>
 	</div>
 </xsl:template>
