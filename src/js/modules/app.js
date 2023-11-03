@@ -19,10 +19,6 @@
 			// system events
 			case "spawn.open":
 				Self.dispatch({ ...event, type: "show-app" });
-				
-				// DEV-ONLY-START
-				Test.init(Self, Spawn);
-				// DEV-ONLY-END
 				break;
 			case "spawn.focus":
 			case "spawn.blur":

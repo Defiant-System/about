@@ -16,6 +16,9 @@ const about = {
 		// proxy spawn events
 		if (spawn) {
 			let [a, s, name] = spawn._id.split("-");
+			// DEV-ONLY-START
+			if (event.type === "spawn.open") Test.init(Self, spawn);
+			// DEV-ONLY-END
 			return Self[name].dispatch(event);
 		}
 		// console.log(event);
@@ -30,10 +33,6 @@ const about = {
 			case "window.init":
 				spawn = window.open("spawn-karaqu");
 				Self.karaqu.dispatch({ ...event, type: "spawn.init", spawn });
-				
-				// DEV-ONLY-START
-				Test.init(Self, spawn);
-				// DEV-ONLY-END
 				break;
 			case "show-app":
 				spawn = window.open("spawn-app");
