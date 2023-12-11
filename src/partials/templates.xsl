@@ -33,7 +33,7 @@
 					<div class="field-row">
 						<div>Account type</div>
 						<div class="modified"><xsl:choose>
-							<xsl:when test="//Settings/User/@account_type = 1">Premium</xsl:when>
+							<xsl:when test="//Settings/User/@account_type = 2">Premium</xsl:when>
 							<xsl:otherwise>Free</xsl:otherwise>
 						</xsl:choose></div>
 					</div>
@@ -50,12 +50,12 @@
 	<xsl:variable name="used" select="sum($baseDir//i/@size)"></xsl:variable>
 	<xsl:variable name="quota">
 		<xsl:call-template name="sys:storage-size">
-			<xsl:with-param name="bytes" select="$baseDir/@quota" />
+			<xsl:with-param name="bytes" select="$baseDir/@disc" />
 		</xsl:call-template>
 	</xsl:variable>
 	<xsl:variable name="available">
 		<xsl:call-template name="sys:file-size">
-			<xsl:with-param name="bytes" select="$baseDir/@quota - $used" />
+			<xsl:with-param name="bytes" select="$baseDir/@disc - $used" />
 		</xsl:call-template>
 	</xsl:variable>
 
@@ -81,12 +81,12 @@
 	<xsl:variable name="used" select="sum($exclude//i/@size)"></xsl:variable>
 	<xsl:variable name="quota">
 		<xsl:call-template name="sys:storage-size">
-			<xsl:with-param name="bytes" select="$baseDir/@quota" />
+			<xsl:with-param name="bytes" select="$baseDir/@disc" />
 		</xsl:call-template>
 	</xsl:variable>
 	<xsl:variable name="available">
 		<xsl:call-template name="sys:file-size">
-			<xsl:with-param name="bytes" select="$baseDir/@quota - $used" />
+			<xsl:with-param name="bytes" select="$baseDir/@disc - $used" />
 		</xsl:call-template>
 	</xsl:variable>
 	<xsl:variable name="name">
