@@ -7,7 +7,7 @@ const about = {
 	init() {
 		this.spawns = {};
 		// listen to system event
-		karaqu.on("sys:window.closed", this.dispatch);
+		window.on("sys:window.closed", this.dispatch);
 	},
 	async dispatch(event) {
 		let Self = about,
