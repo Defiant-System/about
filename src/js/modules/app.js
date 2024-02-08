@@ -5,7 +5,7 @@
 	init() {
 
 	},
-	dispatch(event) {
+	async dispatch(event) {
 		let APP = about,
 			Self = APP.karaqu,
 			Spawn = event.spawn,
@@ -42,6 +42,11 @@
 						xPorted = xApp.selectSingleNode(".//meta[@ported]");
 					if (xPorted && !sApp.getAttribute("ported")) {
 						sApp.setAttribute("ported", xPorted.getAttribute("ported"));
+					}
+
+					if (!sApp) {
+						sApp = await karaqu.message({ type: "add-ns-app", ns, id: app });
+						console.log(sApp);
 					}
 
 					["title", "author", "license"].map(name => {
