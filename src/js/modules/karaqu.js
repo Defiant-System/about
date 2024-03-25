@@ -13,6 +13,12 @@
 		// console.log(event);
 		switch (event.type) {
 			// system events
+			case "spawn.init":
+				if (event.flags && event.flags.includes("l")) {
+					// auto click license tool button
+					Spawn.find(`.toolbar-tool_[data-click="karaqu-eula"]`).trigger("click");
+				}
+				break;
 			case "spawn.open":
 				Self.dispatch({ ...event, type: "about-karaqu" });
 				break;
