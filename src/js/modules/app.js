@@ -57,7 +57,7 @@
 						}
 					});
 				}
-
+				
 				karaqu.message({ type: "load-app-icon", ns, id: app })
 					.then(res => {
 						// render overview content
@@ -69,6 +69,11 @@
 						});
 						// resize window body
 						Spawn.find(".win-body_").css({ height: el.height() });
+				
+						if (event.flags && event.flags.includes("l")) {
+							// auto click license tool button
+							Spawn.find(`.toolbar-tool_[data-click="app-license"]`).trigger("click");
+						}
 					});
 				return true;
 			case "app-license":
