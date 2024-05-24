@@ -77,7 +77,7 @@
 
 <xsl:template name="karaqu-storage-item">
 	<xsl:param name="baseDir" select="//FileSystem"/>
-	<xsl:variable name="exclude" select="$baseDir/*[@name != 'Mount']"/>
+	<xsl:variable name="exclude" select="$baseDir/*[@name != 'Mount'][@name != 'Applications'][@name != 'Shared']"/>
 	<xsl:variable name="used" select="sum($exclude//i/@size)"></xsl:variable>
 	<xsl:variable name="quota">
 		<xsl:call-template name="sys:storage-size">
@@ -123,7 +123,7 @@
 			</h5>
 			<xsl:call-template name="sys:disc-bar">
 				<xsl:with-param name="base" select="$baseDir" />
-				<xsl:with-param name="exclude" select="$baseDir/*[@name != 'Mount']" />
+				<xsl:with-param name="exclude" select="$exclude" />
 			</xsl:call-template>
 		</div>
 	</div>
