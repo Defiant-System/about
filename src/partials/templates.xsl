@@ -10,6 +10,9 @@
 <xsl:template name="about-karaqu">
 	<div class="about-karaqu">
 		<div class="row-body">
+			<xsl:if test="//Settings/User/@account-type = 2">
+				<xsl:attribute name="data-premium">1</xsl:attribute>
+			</xsl:if>
 			<div class="panel-left">
 				<i class="icon" style="background-image: url(/res/img/def-logo.webp);"></i>
 			</div>
@@ -33,7 +36,7 @@
 					<div class="field-row">
 						<div>Account type</div>
 						<div class="modified"><xsl:choose>
-							<xsl:when test="//Settings/User/@account_type = 2">Premium</xsl:when>
+							<xsl:when test="//Settings/User/@account-type = 2">Premium</xsl:when>
 							<xsl:otherwise>Free</xsl:otherwise>
 						</xsl:choose></div>
 					</div>

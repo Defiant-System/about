@@ -220,6 +220,29 @@ content {
 	}
 
 	.about-karaqu {
+		.row-body[data-premium="1"] {
+			.panel-left {
+				.icon {
+					filter: grayscale(1) sepia(1) saturate(2.25) brightness(0.95);
+				}
+			}
+
+			.panel-right {
+				.field-row:nth-child(4) div.modified {
+					&:after {
+						content: "★";
+						padding-left: 3px;
+						color: #fa1;
+						text-shadow: 0 1px 3px rgba(#ed5);
+					}
+				}
+			}
+		}
+		
+		.panel-left {
+
+		}
+
 		.panel-right {
 			padding-bottom: 50px;
 		}
