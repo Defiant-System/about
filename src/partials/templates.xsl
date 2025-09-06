@@ -34,10 +34,10 @@
 						<div class="modified"><xsl:value-of select="//Settings/User/@name" /></div>
 					</div>
 					<div class="field-row">
-						<div>Account type</div>
+						<div>Account</div>
 						<div class="modified"><xsl:choose>
 							<xsl:when test="//Settings/User/@account-type = 2">Premium</xsl:when>
-							<xsl:otherwise>Free</xsl:otherwise>
+							<xsl:otherwise>Freemium</xsl:otherwise>
 						</xsl:choose></div>
 					</div>
 				</div>
